@@ -40,6 +40,7 @@ public class Professeur {
 	
 	@Column(columnDefinition = "DATE")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@JsonView(Vue.Common.class)
 	private LocalDate datenaissance;
 	
 	@ManyToMany
@@ -48,10 +49,12 @@ public class Professeur {
 	private Matiere matiere;
 	
 	@Embedded
+	@JsonView(Vue.Common.class)
 	private Adresse adresse;
 	
 	
 	@ManyToMany
+	@JsonView(Vue.Common.class)
 	private Cours cours;
 	
 	@JsonView(Vue.Common.class)
@@ -62,6 +65,22 @@ public class Professeur {
 
 	public Professeur() {
 		super();
+	}
+	
+	
+
+	public Professeur(@NotEmpty String nom, @NotEmpty String prenom) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
+	public Professeur(@NotEmpty String nom, @NotEmpty String prenom, LocalDate datenaissance, Adresse adresse) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.datenaissance = datenaissance;
+		this.adresse = adresse;
 	}
 
 	public Integer getId() {

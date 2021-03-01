@@ -45,6 +45,22 @@ public class Compte {
 	public Compte() {
 		
 	}
+	
+	public Compte(String login, String password) {
+		super();
+		this.login = login;
+		this.password = password;
+	}
+
+
+
+	public Compte(String login, String password, Professeur utilisateur, Role role) {
+		super();
+		this.login = login;
+		this.password = password;
+		this.utilisateur = utilisateur;
+		this.role = role;
+	}
 
 	public Integer getId() {
 		return id;
