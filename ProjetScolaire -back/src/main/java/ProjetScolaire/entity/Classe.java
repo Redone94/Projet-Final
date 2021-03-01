@@ -85,6 +85,7 @@ public class Classe {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+		
 	}
 
 	
