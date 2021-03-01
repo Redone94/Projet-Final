@@ -1,4 +1,4 @@
-package ProjetFinal.service;
+package ProjetScolaire.service;
 
 public class CompteService {
 

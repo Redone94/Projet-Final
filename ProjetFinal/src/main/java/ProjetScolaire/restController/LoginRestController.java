@@ -1,4 +1,4 @@
-package ProjetFinal.restController;
+package ProjetScolaire.restController;
 
 public class LoginRestController {
 
