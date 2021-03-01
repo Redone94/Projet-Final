@@ -39,6 +39,9 @@ public class Compte {
 	@JsonView(Vue.Common.class)
 	protected Role role;
 	
+	@JsonView(Vue.Common.class)
+	protected Etablissement etablissement;
+	
 	@Version
 	protected int version;
 
@@ -52,14 +55,13 @@ public class Compte {
 		this.password = password;
 	}
 
-
-
-	public Compte(String login, String password, Professeur utilisateur, Role role) {
+	public Compte(String login, String password, Professeur utilisateur, Role role, Etablissement etablissement) {
 		super();
 		this.login = login;
 		this.password = password;
 		this.utilisateur = utilisateur;
 		this.role = role;
+		this.etablissement = etablissement;
 	}
 
 	public Integer getId() {
@@ -100,6 +102,23 @@ public class Compte {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+
+	public Professeur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Professeur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Etablissement getEtablissement() {
+		return etablissement;
+	}
+
+	public void setEtablissement(Etablissement etablissement) {
+		this.etablissement = etablissement;
 	}
 
 	@Override

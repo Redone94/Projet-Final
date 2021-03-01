@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -51,14 +52,18 @@ public class Professeur {
 	@Embedded
 	@JsonView(Vue.Common.class)
 	private Adresse adresse;
-	
-	
+		
 	@ManyToMany
 	@JsonView(Vue.Common.class)
 	private Cours cours;
 	
 	@JsonView(Vue.Common.class)
 	protected String image;
+	
+	@OneToOne
+	@JoinColumn(name="compte")
+	@JsonView(Vue.Common.class)
+	protected Compte compte;
 	
 	@Version
 	protected int version;
@@ -67,20 +72,24 @@ public class Professeur {
 		super();
 	}
 	
-	
-
 	public Professeur(@NotEmpty String nom, @NotEmpty String prenom) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 	}
 
-	public Professeur(@NotEmpty String nom, @NotEmpty String prenom, LocalDate datenaissance, Adresse adresse) {
+	
+	public Professeur(@NotEmpty String nom, @NotEmpty String prenom, LocalDate datenaissance, Matiere matiere,
+			Adresse adresse, Cours cours, String image, Compte compte) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.datenaissance = datenaissance;
+		this.matiere = matiere;
 		this.adresse = adresse;
+		this.cours = cours;
+		this.image = image;
+		this.compte = compte;
 	}
 
 	public Integer getId() {
@@ -155,6 +164,14 @@ public class Professeur {
 	public void setVersion(int version) {
 		this.version = version;
 	}
+	
+	public Compte getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
 
 	@Override
 	public int hashCode() {
@@ -180,6 +197,8 @@ public class Professeur {
 			return false;
 		return true;
 	}
+
+
 	
 	
 
