@@ -1,5 +1,9 @@
 package ProjetScolaire.repository;
 
-public interface EtablissementRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import ProjetScolaire.entity.Etablissement;
+
+public interface EtablissementRepository extends JpaRepository<Etablissement, Integer> {
 
 }
