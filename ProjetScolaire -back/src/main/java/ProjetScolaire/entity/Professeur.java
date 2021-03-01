@@ -44,7 +44,7 @@ public class Professeur {
 	@JsonView(Vue.Common.class)
 	private LocalDate datenaissance;
 	
-	@ManyToMany
+	
 	@JoinColumn(name = "Matiere")
 	@JsonView(Vue.Common.class)
 	private Matiere matiere;
@@ -53,7 +53,7 @@ public class Professeur {
 	@JsonView(Vue.Common.class)
 	private Adresse adresse;
 		
-	@ManyToMany
+	
 	@JsonView(Vue.Common.class)
 	private Cours cours;
 	

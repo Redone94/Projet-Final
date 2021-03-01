@@ -28,12 +28,12 @@ public class SalleClasse {
 	
 	private int capacite;
 	
-	@ManyToMany()
+	
 	@JoinColumn(name = "Etablissement")
 	@JsonView(Vue.Common.class)
 	protected Etablissement etablissement; 
 
-	@ManyToMany()
+	
 	@JoinColumn(name = "Cours")
 	@JsonView(Vue.Common.class)
 	protected Cours cours;

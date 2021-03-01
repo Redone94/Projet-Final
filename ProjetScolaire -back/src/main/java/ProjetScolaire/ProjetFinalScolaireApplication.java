@@ -1,4 +1,4 @@
-package ProjetScolaire.ProjetScolaireSpringBoot;
+package ProjetScolaire;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

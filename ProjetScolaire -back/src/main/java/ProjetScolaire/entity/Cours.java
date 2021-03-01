@@ -48,9 +48,8 @@ public class Cours {
 	@JsonView(Vue.Common.class)
 	private Classe classe;
 	
-	@ManyToMany
+
 	@JoinColumn(name ="professeur")
-	@NotEmpty
 	@JsonView
 	private Professeur professeur;
 	

@@ -30,7 +30,7 @@ public class Matiere {
 	@JsonView(Vue.Common.class)
 	private String couleur;
 	
-	@ManyToMany
+	
 	@JoinColumn(name="professeur")
 	@JsonView(Vue.Common.class)
 	private Set<Professeur> professeurs;
