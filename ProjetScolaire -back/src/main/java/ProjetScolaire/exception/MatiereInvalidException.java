@@ -1,4 +1,4 @@
-package ProjetFinal.exception;
+package ProjetScolaire.exception;
 
 public class MatiereInvalidException {
 

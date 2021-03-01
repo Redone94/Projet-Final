@@ -1,4 +1,4 @@
-package ProjetFinal.entity;
+package ProjetScolaire.entity;
 
 public class Etablissement {
 

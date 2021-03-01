@@ -8,10 +8,10 @@
 		<version>2.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ProjetFinal</groupId>
-	<artifactId>ProjetFinalSpringBoot</artifactId>
+	<groupId>ProjetScolaire</groupId>
+	<artifactId>ProjetScolaire-back</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>ProjetFinalScolaire</name>
+	<name>ProjetScolaire</name>
 	<description>application gestion scolaire</description>
 	<properties>
 		<java.version>1.8</java.version>
