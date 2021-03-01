@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
@@ -31,11 +32,13 @@ public class Cours {
 	
 	
 	@ManyToMany
+	@JoinColumn(name="matiere")
 	@NotEmpty
 	@JsonView(Vue.Common.class)
 	private Set<Matiere> matieres;
 	
 	@ManyToMany
+	@JoinColumn(name="salleClasse")
 	@NotEmpty
 	@JsonView(Vue.Common.class)
 	private Set<SalleClasse> salleClasse;
@@ -45,12 +48,26 @@ public class Cours {
 	@JsonView(Vue.Common.class)
 	private Classe classe;
 	
+	@ManyToMany
+	@JoinColumn(name ="professeur")
+	@NotEmpty
+	@JsonView
+	private Professeur professeur;
+	
 	@Version
 	protected int version;
 	
 	public Cours()
 	{
 		
+	}
+
+	public Professeur getProfesseur() {
+		return professeur;
+	}
+
+	public void setProfesseur(Professeur professeur) {
+		this.professeur = professeur;
 	}
 
 	public LocalDate getDateDebut() {
