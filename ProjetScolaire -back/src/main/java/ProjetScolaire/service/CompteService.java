@@ -20,6 +20,6 @@ public class CompteService implements org.springframework.security.core.userdeta
 		if (opt.isPresent()) {
 			return new UserDetailsWithCompte(opt.get());
 		}
-		throw new UsernameNotFoundException("mail inconnu");
+		throw new UsernameNotFoundException("Login inconnu");
 	}
 }
