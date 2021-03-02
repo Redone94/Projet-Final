@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import ProjetScolaire.entity.Classe;
 import ProjetScolaire.entity.Compte;
 import ProjetScolaire.entity.Matiere;
+import ProjetScolaire.entity.Role;
 import ProjetScolaire.repository.ClasseRepository;
 import ProjetScolaire.repository.CompteRepository;
 import ProjetScolaire.repository.MatiereRepository;
@@ -52,7 +53,8 @@ public class InitDataBaseUser implements CommandLineRunner{
 		Compte C1=new Compte();
 		
 		C1.setLogin("red");
-		C1.setPassword("123");
+		C1.setPassword(passwordEncorder.encode("123"));
+		C1.setRole(Role.ROLE_ADMIN);
 		compteRepository.save(C1);
 	}
 

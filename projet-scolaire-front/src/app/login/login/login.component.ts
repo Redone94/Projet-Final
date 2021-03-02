@@ -23,26 +23,16 @@ export class LoginComponent implements OnInit {
   passwordGoup: FormGroup;
 
 
+
   constructor(private LoginService: LoginService, private router: Router, private fb : FormBuilder) {
 
-    this.loginCtrl=this.fb.control([Validators.required,Validators.minLength(8)], this.checkLogin())
-    this.pwdCtrl=this.fb.control([Validators.minLength(6),Validators.pattern(/^(?=.*\d)(?=.*[a-zA-Z])([a-zA-Z0-9]{3,})$/),])
-    this.confirmCtrl = this.fb.control(Validators.required)
-
-    this.passwordGoup=this.fb.group(
-      {
-        password: this.pwdCtrl,
-        confirm: this.confirmCtrl
-      },
-      { validator: this.checkPassword
-      }
-      );
-
+    this.loginCtrl=this.fb.control('',[Validators.required,Validators.minLength(3)])
+    this.pwdCtrl=this.fb.control('',[Validators.minLength(3)])
 
     this.form=this.fb.group(
       {
       login: this.loginCtrl,
-      passGroup:this.passwordGoup,
+      password : this.pwdCtrl
     });
 
    }
@@ -50,33 +40,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  private checkLogin(): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return this.LoginService.checkLogin(control.value).pipe(
-        debounceTime(500),
-        map((result: boolean) => {
-          return result ? { loginExist: true } : null;
-        })
-      );
-    };
-  }
-
-  private checkPassword(group: FormGroup) {
-    const password = group.controls.password;
-    const confirm = group.controls['confirm'];
-    if (password.errors) {
-      return null;
-    }
-    return password.value !== confirm.value ? { notEquals: true } : null;
-  }
-
   public send()
   {
     this.LoginService.auth(new Login(this.loginCtrl.value, this.pwdCtrl.value)).subscribe((result) =>{
 
-      sessionStorage.setItem('tokenId',btoa(`${this.login.username}:${this.login.password}`)
+      sessionStorage.setItem('tokenId',btoa(`${this.loginCtrl.value}:${this.pwdCtrl.value}`)
       );
-      sessionStorage.setItem('login', this.login.username);
+      sessionStorage.setItem('login', this.loginCtrl.value);
       this.router.navigate(['/reset']);
     },
     (error) => {
@@ -92,9 +62,6 @@ export class LoginComponent implements OnInit {
       return this.pwdCtrl.dirty && this.pwdCtrl.invalid;
       }
 
-      public confirmNotEquals(): boolean {
-      return this.confirmCtrl.dirty && this.passwordGoup.invalid;
-      }
 
 
 

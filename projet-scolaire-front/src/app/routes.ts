@@ -33,6 +33,6 @@ export const routes: Routes = [
   { path: 'classes', component: ListClassesComponent },
   { path: 'professeurs', component: ListProfesseursComponent },
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 
 ];

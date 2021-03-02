@@ -12,14 +12,14 @@
   <div class="form-group ">
   <label class="labelle" for="login">Login:</label>
   <input class="form-control " name="login" [formControl]="loginCtrl " />
-  <div *ngIf="loginCtrl.dirty && loginCtrl.hasError( 'required') " class="alert alert-danger ">
+  <div (ngSubmit)="loginIsInvalid()" *ngIf="loginCtrl.dirty && loginCtrl.hasError( 'required') " class="alert alert-danger ">
   login obligatoire
   </div>
   </div>
   <div class="form-group ">
   <label class="labelle" for="pwd">Mot de passe:</label>
   <input class="form-control " name="pwd" [formControl]="pwdCtrl " />
-  <div *ngIf="pwdCtrl.dirty && pwdCtrl.hasError( 'required') " class="alert alert-danger ">
+  <div *ngIf="passwordIsInvalid()" class="alert alert-danger ">
   Password obligatoire
   </div>
   </div>
