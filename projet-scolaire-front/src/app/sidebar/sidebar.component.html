@@ -1,16 +1,16 @@
 <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Therichpost </div>
+        <div class="sidebar-heading">The </div>
         <div class="list-group list-group-flush">
             <a href="#" class="list-group-item list-group-item-action bg-light">Deconnection</a>
             <a class="list-group-item list-group-item-action bg-light">Dashboard</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Utilisateurs</a>
+            <a [routerLink]="['/utilisateurs']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Utilisateurs</a>
             <a [routerLink]="['/etablissements']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Etablissements</a>
-            <a [routerLink]="['/']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Matières</a>
-            <a [routerLink]="['/']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Salles</a>
-            <a [routerLink]="['/']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Classes</a>
-            <a [routerLink]="['/']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Professeurs</a>
+            <a [routerLink]="['/matieres']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Matières</a>
+            <a [routerLink]="['/salles']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Salles</a>
+            <a [routerLink]="['/classes']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Classes</a>
+            <a [routerLink]="['/professeurs']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Professeurs</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->

@@ -31,6 +31,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {
   UtilisateursComponent
 } from './utilisateurs/utilisateurs/utilisateurs.component';
+import { ListMatieresComponent } from './matieres/list-matieres/list-matieres.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {
     ListSallesComponent,
     ListClassesComponent,
     UtilisateursComponent,
+    ListMatieresComponent,
   ],
   imports: [
     BrowserModule,
