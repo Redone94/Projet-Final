@@ -44,8 +44,8 @@ public class CompteService implements UserDetailsService  {
 		userRepo.delete(c);
 	}
 
-	public void delete(String login) {
-		userRepo.deleteById(login);
+	public void delete(Integer id) {
+		userRepo.deleteById(id);
 	}
 
 	public Compte save(Compte c) {

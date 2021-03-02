@@ -1,14 +1,14 @@
 package ProjetScolaire.entity;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Version;
 import javax.validation.constraints.NotEmpty;
 
@@ -30,10 +30,16 @@ public class Matiere {
 	@JsonView(Vue.Common.class)
 	private String couleur;
 	
-	
-	@JoinColumn(name="professeur")
+	@ManyToMany
+	@JoinTable(name="List_professeurs",joinColumns = {@JoinColumn(name="id")},inverseJoinColumns = {@JoinColumn(name="id_professeur")} )
 	@JsonView(Vue.Common.class)
-	private Set<Professeur> professeurs;
+	private List<Professeur> professeurs;
+	
+	@ManyToMany
+	@JoinTable(name="List_matiere",joinColumns = {@JoinColumn(name="id")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
+	@NotEmpty
+	@JsonView(Vue.Common.class)
+	private List<Cours> cours;
 	
 	@Version
 	protected int version;
@@ -41,6 +47,17 @@ public class Matiere {
 	public Matiere() {
 		
 	}
+
+	
+	public List<Cours> getCours() {
+		return cours;
+	}
+
+
+	public void setCours(List<Cours> cours) {
+		this.cours = cours;
+	}
+
 
 	public String getNomMatiere() {
 		return nomMatiere;
@@ -58,20 +75,37 @@ public class Matiere {
 		this.couleur = couleur;
 	}
 
-	public Set<Professeur> getProfesseur() {
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public List<Professeur> getProfesseurs() {
 		return professeurs;
 	}
 
-	public void setProfesseur(Set<Professeur> professeur) {
-		this.professeurs = professeur;
+	public void setProfesseurs(List<Professeur> professeurs) {
+		this.professeurs = professeurs;
 	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((couleur == null) ? 0 : couleur.hashCode());
+		result = prime * result + ((cours == null) ? 0 : cours.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nomMatiere == null) ? 0 : nomMatiere.hashCode());
+		result = prime * result + ((professeurs == null) ? 0 : professeurs.hashCode());
+		result = prime * result + version;
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -81,14 +115,38 @@ public class Matiere {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Compte other = (Compte) obj;
+		Matiere other = (Matiere) obj;
+		if (couleur == null) {
+			if (other.couleur != null)
+				return false;
+		} else if (!couleur.equals(other.couleur))
+			return false;
+		if (cours == null) {
+			if (other.cours != null)
+				return false;
+		} else if (!cours.equals(other.cours))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (nomMatiere == null) {
+			if (other.nomMatiere != null)
+				return false;
+		} else if (!nomMatiere.equals(other.nomMatiere))
+			return false;
+		if (professeurs == null) {
+			if (other.professeurs != null)
+				return false;
+		} else if (!professeurs.equals(other.professeurs))
+			return false;
+		if (version != other.version)
+			return false;
 		return true;
 	}
+
+
 
 	
 }

@@ -7,7 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -31,14 +31,12 @@ public class Compte {
 	
 	@Column(name="password", length = 150, nullable=false)
 	protected String password;
-	
-	@OneToOne(mappedBy = "compte")
-	protected Professeur utilisateur;
-	
+		
 	@Enumerated(EnumType.STRING)
 	@JsonView(Vue.Common.class)
 	protected Role role;
 	
+	@ManyToOne
 	@JsonView(Vue.Common.class)
 	protected Etablissement etablissement;
 	
@@ -55,11 +53,10 @@ public class Compte {
 		this.password = password;
 	}
 
-	public Compte(String login, String password, Professeur utilisateur, Role role, Etablissement etablissement) {
+	public Compte(String login, String password, Role role, Etablissement etablissement) {
 		super();
 		this.login = login;
 		this.password = password;
-		this.utilisateur = utilisateur;
 		this.role = role;
 		this.etablissement = etablissement;
 	}
@@ -105,13 +102,6 @@ public class Compte {
 	}
 	
 
-	public Professeur getUtilisateur() {
-		return utilisateur;
-	}
-
-	public void setUtilisateur(Professeur utilisateur) {
-		this.utilisateur = utilisateur;
-	}
 
 	public Etablissement getEtablissement() {
 		return etablissement;

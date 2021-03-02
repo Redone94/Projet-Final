@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import ProjetScolaire.entity.Etablissement;
 import ProjetScolaire.entity.Vue;
 import ProjetScolaire.repository.CompteRepository;
 import ProjetScolaire.service.UserDetailsWithCompte;
@@ -29,7 +30,12 @@ public class CompteRestController {
 	public UserDetailsWithCompte getUser(Model model,Authentication authentif) {
         UserDetailsWithCompte compte= (UserDetailsWithCompte) authentif.getPrincipal();
         return compte;
-
     }
-
+	@GetMapping({ "", "/" })
+	@JsonView(Vue.Common.class)
+	public Etablissement getEtablissement(Model model,Authentication authentif) {
+		return null;
+		
+	}
+	
 }

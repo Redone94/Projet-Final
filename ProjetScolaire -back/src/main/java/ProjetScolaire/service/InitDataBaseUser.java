@@ -1,8 +1,5 @@
 package ProjetScolaire.service;
 
-import java.util.List;
-
-import org.hibernate.tool.hbm2ddl.ImportSqlCommandExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,7 +11,7 @@ import ProjetScolaire.repository.ClasseRepository;
 import ProjetScolaire.repository.MatiereRepository;
 import ProjetScolaire.repository.ProfesseurRepository;
 
-@Service
+@Service	
 public class InitDataBaseUser implements CommandLineRunner{
 	
 	@Autowired

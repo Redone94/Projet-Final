@@ -23,7 +23,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-
 import ProjetScolaire.entity.Professeur;
 import ProjetScolaire.entity.Vue;
 import ProjetScolaire.exception.ProfesseurNotFoundException;
@@ -59,7 +58,7 @@ public class ProfesseurRestController {
 		
 		
 		professeurService.creationProfesseur(p);
-		URI uri = uCB.path("/api/Employe/{id}").buildAndExpand(p.getId()).toUri();
+		URI uri = uCB.path("/api/Employe/{id}").buildAndExpand(p.getId_professeur()).toUri();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(uri);
 		return new ResponseEntity<Professeur>(p, headers, HttpStatus.CREATED);
@@ -69,7 +68,7 @@ public class ProfesseurRestController {
 	@JsonView(Vue.Common.class)
 	public Professeur findById(@PathVariable("id") Integer id) {
 		Professeur p = professeurService.findbyId(id);
-		if (p.getId() != null) {
+		if (p.getId_professeur() != null) {
 			return p;
 		}
 		throw new ProfesseurNotFoundException();
@@ -82,7 +81,7 @@ public class ProfesseurRestController {
 			throw new ProfesseurinvalidException();
 		}
 		Professeur EmployeEnBase = professeurService.findbyId(id);
-		if (EmployeEnBase.getId() == null) {
+		if (EmployeEnBase.getId_professeur() == null) {
 			throw new ProfesseurNotFoundException();
 		}
 		EmployeEnBase.setPrenom(p.getPrenom());
@@ -94,7 +93,7 @@ public class ProfesseurRestController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
 		Professeur EmployeEnBase = professeurService.findbyId(id);
-		if (EmployeEnBase.getId() == null) {
+		if (EmployeEnBase.getId_professeur	() == null) {
 			throw new ProfesseurNotFoundException();
 		}
 		professeurService.delete(id);

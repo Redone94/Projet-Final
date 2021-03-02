@@ -1,6 +1,7 @@
 package ProjetScolaire.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -29,7 +31,7 @@ public class Professeur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEmploye")
 	@JsonView(Vue.Common.class)
-	private Integer id;
+	private Integer id_professeur;
 	
 	@NotEmpty
 	@JsonView(Vue.Common.class)
@@ -45,17 +47,19 @@ public class Professeur {
 	private LocalDate datenaissance;
 	
 	
-	@JoinColumn(name = "Matiere")
+	@ManyToMany
+	@JoinTable(name="List_professeurs",joinColumns = {@JoinColumn(name="id_professeur")},inverseJoinColumns = {@JoinColumn(name="id")} )
 	@JsonView(Vue.Common.class)
-	private Matiere matiere;
+	private List<Matiere> matiere;
 	
 	@Embedded
 	@JsonView(Vue.Common.class)
 	private Adresse adresse;
 		
-	
+	@ManyToMany
+	@JoinTable(name="List_professeur",joinColumns = {@JoinColumn(name="id_professeur")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
 	@JsonView(Vue.Common.class)
-	private Cours cours;
+	private List<Cours> cours;
 	
 	@JsonView(Vue.Common.class)
 	protected String image;
@@ -78,10 +82,10 @@ public class Professeur {
 		this.prenom = prenom;
 	}
 
-	
-	public Professeur(@NotEmpty String nom, @NotEmpty String prenom, LocalDate datenaissance, Matiere matiere,
-			Adresse adresse, Cours cours, String image, Compte compte) {
+	public Professeur(Integer id_professeur, @NotEmpty String nom, @NotEmpty String prenom, LocalDate datenaissance,
+			List<Matiere> matiere, Adresse adresse, List<Cours> cours, String image, Compte compte) {
 		super();
+		this.id_professeur = id_professeur;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.datenaissance = datenaissance;
@@ -92,12 +96,12 @@ public class Professeur {
 		this.compte = compte;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getId_professeur() {
+		return id_professeur;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId_professeur(Integer id_professeur) {
+		this.id_professeur = id_professeur;
 	}
 
 	public String getNom() {
@@ -124,11 +128,11 @@ public class Professeur {
 		this.datenaissance = datenaissance;
 	}
 
-	public Matiere getMatiere() {
+	public List<Matiere> getMatiere() {
 		return matiere;
 	}
 
-	public void setMatiere(Matiere matiere) {
+	public void setMatiere(List<Matiere> matiere) {
 		this.matiere = matiere;
 	}
 
@@ -140,11 +144,11 @@ public class Professeur {
 		this.adresse = adresse;
 	}
 
-	public Cours getCours() {
+	public List<Cours> getCours() {
 		return cours;
 	}
 
-	public void setCours(Cours cours) {
+	public void setCours(List<Cours> cours) {
 		this.cours = cours;
 	}
 
@@ -155,16 +159,7 @@ public class Professeur {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
 
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
-	
 	public Compte getCompte() {
 		return compte;
 	}
@@ -173,11 +168,28 @@ public class Professeur {
 		this.compte = compte;
 	}
 
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
+		result = prime * result + ((compte == null) ? 0 : compte.hashCode());
+		result = prime * result + ((cours == null) ? 0 : cours.hashCode());
+		result = prime * result + ((datenaissance == null) ? 0 : datenaissance.hashCode());
+		result = prime * result + ((id_professeur == null) ? 0 : id_professeur.hashCode());
+		result = prime * result + ((image == null) ? 0 : image.hashCode());
+		result = prime * result + ((matiere == null) ? 0 : matiere.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
+		result = prime * result + version;
 		return result;
 	}
 
@@ -190,16 +202,58 @@ public class Professeur {
 		if (getClass() != obj.getClass())
 			return false;
 		Professeur other = (Professeur) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (adresse == null) {
+			if (other.adresse != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!adresse.equals(other.adresse))
+			return false;
+		if (compte == null) {
+			if (other.compte != null)
+				return false;
+		} else if (!compte.equals(other.compte))
+			return false;
+		if (cours == null) {
+			if (other.cours != null)
+				return false;
+		} else if (!cours.equals(other.cours))
+			return false;
+		if (datenaissance == null) {
+			if (other.datenaissance != null)
+				return false;
+		} else if (!datenaissance.equals(other.datenaissance))
+			return false;
+		if (id_professeur == null) {
+			if (other.id_professeur != null)
+				return false;
+		} else if (!id_professeur.equals(other.id_professeur))
+			return false;
+		if (image == null) {
+			if (other.image != null)
+				return false;
+		} else if (!image.equals(other.image))
+			return false;
+		if (matiere == null) {
+			if (other.matiere != null)
+				return false;
+		} else if (!matiere.equals(other.matiere))
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
+				return false;
+		} else if (!nom.equals(other.nom))
+			return false;
+		if (prenom == null) {
+			if (other.prenom != null)
+				return false;
+		} else if (!prenom.equals(other.prenom))
+			return false;
+		if (version != other.version)
 			return false;
 		return true;
 	}
 
-
 	
+
 	
 
 }

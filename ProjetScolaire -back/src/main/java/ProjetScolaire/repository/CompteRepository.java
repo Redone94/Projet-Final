@@ -13,7 +13,7 @@ import ProjetScolaire.entity.Role;
 public interface CompteRepository extends JpaRepository<Compte, Integer> {
 	
 	public Optional<Compte> findByLogin(String login);
-	public Optional<Compte> deleteById(String login);
+	public void deleteById(Integer id);
 	public List<Compte> findAllByRole(Role role);
 	@Query("select c from Compte c left join fetch c.role where c.login=:login")
 	public Optional<Compte> findByLoginWithRole(@Param("login") String login);

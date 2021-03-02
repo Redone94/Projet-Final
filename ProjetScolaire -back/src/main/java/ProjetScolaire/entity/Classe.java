@@ -26,7 +26,7 @@ public class Classe {
 	@JsonView(Vue.Common.class)
 	private String profPrincipal;
 	
-	@OneToOne(mappedBy = "classe")
+	@OneToOne(mappedBy = "cours")
 	@JsonView(Vue.Common.class)
 	private Cours cours;
 	

@@ -1,12 +1,16 @@
 package ProjetScolaire.entity;
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -28,15 +32,14 @@ public class SalleClasse {
 	
 	private int capacite;
 	
-	
-	@JoinColumn(name = "Etablissement")
+	@ManyToOne
 	@JsonView(Vue.Common.class)
 	protected Etablissement etablissement; 
 
-	
-	@JoinColumn(name = "Cours")
+	@ManyToMany
+	@JoinTable(name="List_classes",joinColumns = {@JoinColumn(name="id")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
 	@JsonView(Vue.Common.class)
-	protected Cours cours;
+	protected List<Cours> cours;
 	
 	@Version
 	protected int version;
@@ -78,14 +81,13 @@ public class SalleClasse {
 		this.etablissement = etablissement;
 	}
 
-	public Cours getCours() {
+	public List<Cours> getCours() {
 		return cours;
 	}
 
-	public void setCours(Cours cours) {
+	public void setCours(List<Cours> cours) {
 		this.cours = cours;
 	}
-	
 
 	public int getVersion() {
 		return version;
