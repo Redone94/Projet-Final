@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -25,10 +26,12 @@ public class Compte {
 	@JsonView(Vue.Common.class)
 	protected Integer id;
 	
+	@NotEmpty
 	@Column(unique=true)
 	@JsonView(Vue.Common.class)
 	protected String login;
 	
+	@NotEmpty
 	@Column(name="password", length = 150, nullable=false)
 	protected String password;
 		

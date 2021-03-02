@@ -35,8 +35,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.and()
 		.antMatcher("/api/**")
 		.authorizeRequests().antMatchers(HttpMethod.OPTIONS).anonymous()
-		.antMatchers("/api/reset").permitAll()
+		.antMatchers("/api/login","/api/reset").permitAll()
+		.antMatchers("/api/accueiladmin/**").hasAnyRole("ADMIN")
 		.antMatchers("/api/**").authenticated()
+		.and()
+		.logout()
+			.logoutUrl("/logout")
+			.invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID")
+			.logoutSuccessUrl("/public")
+			.permitAll()
 		.and().httpBasic();
 		// @formatter:on
 	}

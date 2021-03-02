@@ -12,7 +12,7 @@
   <div class="form-group ">
   <label class="labelle" for="login">Login:</label>
   <input class="form-control " name="login" [formControl]="loginCtrl " />
-  <div (ngSubmit)="loginIsInvalid()" *ngIf="loginCtrl.dirty && loginCtrl.hasError( 'required') " class="alert alert-danger ">
+  <div *ngIf="loginIsInvalid()" class="alert alert-danger ">
   login obligatoire
   </div>
   </div>
