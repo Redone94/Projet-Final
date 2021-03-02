@@ -45,11 +45,11 @@ public class ProfesseurRestController {
 
 	@GetMapping({ "", "/" })
 	@JsonView(Vue.Common.class)
-	public List<Professeur> getAllEmploye() {
+	public List<Professeur> getProfesseurs() {
 		return professeurService.allProfesseur();
 	}
 	@PostMapping({ "", "/" })
-	public ResponseEntity<Professeur> addEmploye(@Valid @RequestBody Professeur p, BindingResult br,
+	public ResponseEntity<Professeur> addProfesseur(@Valid @RequestBody Professeur p, BindingResult br,
 			UriComponentsBuilder uCB) {
 		if (br.hasErrors()) {
 			throw new ProfesseurinvalidException();
@@ -58,7 +58,7 @@ public class ProfesseurRestController {
 		
 		
 		professeurService.creationProfesseur(p);
-		URI uri = uCB.path("/api/Employe/{id}").buildAndExpand(p.getId_professeur()).toUri();
+		URI uri = uCB.path("/api/Professeur/{id}").buildAndExpand(p.getId_professeur()).toUri();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(uri);
 		return new ResponseEntity<Professeur>(p, headers, HttpStatus.CREATED);

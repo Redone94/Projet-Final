@@ -1,8 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import {
-  FormsModule,
-  ReactiveFormsModule
+import {FormsModule,ReactiveFormsModule
 } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -33,6 +31,8 @@ import {
 } from './utilisateurs/utilisateurs/utilisateurs.component';
 import { ListMatieresComponent } from './matieres/list-matieres/list-matieres.component';
 import { ResetComponent } from './reset/reset/reset.component';
+import { LoginComponent } from './login/login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +47,7 @@ import { ResetComponent } from './reset/reset/reset.component';
     UtilisateursComponent,
     ListMatieresComponent,
     ResetComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
