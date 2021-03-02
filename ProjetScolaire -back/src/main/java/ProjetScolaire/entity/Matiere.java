@@ -22,11 +22,11 @@ public class Matiere {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private String nomMatiere;
 	
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private String couleur;
 	
@@ -36,8 +36,8 @@ public class Matiere {
 	private List<Professeur> professeurs;
 	
 	@ManyToMany
-	@JoinTable(name="List_matiere",joinColumns = {@JoinColumn(name="id")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
-	@NotEmpty
+	@JoinTable(name="List_matieres",joinColumns = {@JoinColumn(name="id")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private List<Cours> cours;
 	

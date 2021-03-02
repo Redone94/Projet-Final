@@ -18,15 +18,15 @@ public class Classe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private String nom;
 	
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private String profPrincipal;
 	
-	@OneToOne(mappedBy = "cours")
+	@OneToOne
 	@JsonView(Vue.Common.class)
 	private Cours cours;
 	

@@ -11,9 +11,8 @@ import ProjetScolaire.entity.SalleClasse;
 
 public interface SalleClasseRepository extends JpaRepository<SalleClasse,Integer>{
 
-	@Query("select s from SalleClasse s left join fetch s.etablissement where c.nom=:nom")
-
-	public Optional<SalleClasse> findByNomWithEtablissement(@Param("nom") String nom);
+//	@Query("select s from SalleClasse s left join fetch s.etablissement where c.nom=:nom")
+//	public Optional<SalleClasse> findByNomWithEtablissement(@Param("nom") String nom);
 
 
 

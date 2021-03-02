@@ -3,9 +3,7 @@ package ProjetScolaire.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,29 +23,29 @@ public class Cours {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_cours;
 	
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private LocalDate dateDebut;
 	
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private LocalDate dateFin;
 	
 	
 	@ManyToMany
 	@JoinTable(name="List_matieres",joinColumns = {@JoinColumn(name="id_cours")},inverseJoinColumns = {@JoinColumn(name="id")} )
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private List<Matiere> matieres;
 	
 	@ManyToMany
 	@JoinTable(name="List_classes",joinColumns = {@JoinColumn(name="id_cours")},inverseJoinColumns = {@JoinColumn(name="id")} )
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private List<SalleClasse> salleClasse;
 	
-	@OneToOne
-	@NotEmpty
+	@OneToOne(mappedBy = "cours")
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private Classe classe;
 	

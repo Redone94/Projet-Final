@@ -31,11 +31,11 @@ public class CompteRestController {
         UserDetailsWithCompte compte= (UserDetailsWithCompte) authentif.getPrincipal();
         return compte;
     }
-	@GetMapping({ "", "/" })
-	@JsonView(Vue.Common.class)
-	public Etablissement getEtablissement(Model model,Authentication authentif) {
-		return null;
-		
-	}
+//	@GetMapping({ "", "/" })
+//	@JsonView(Vue.Common.class)
+//	public Etablissement getEtablissement(Model model,Authentication authentif) {
+//		return null;
+//		
+//	}
 	
 }

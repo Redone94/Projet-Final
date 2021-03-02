@@ -33,11 +33,11 @@ public class Professeur {
 	@JsonView(Vue.Common.class)
 	private Integer id_professeur;
 	
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private String nom;
 	
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private String prenom;
 	
@@ -57,7 +57,7 @@ public class Professeur {
 	private Adresse adresse;
 		
 	@ManyToMany
-	@JoinTable(name="List_professeur",joinColumns = {@JoinColumn(name="id_professeur")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
+	@JoinTable(name="List_professeurs",joinColumns = {@JoinColumn(name="id_professeur")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
 	@JsonView(Vue.Common.class)
 	private List<Cours> cours;
 	
