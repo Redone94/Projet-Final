@@ -14,6 +14,7 @@ import {
 import {
   ListProfesseursComponent
 } from './professeurs/list-professeurs/list-professeurs.component';
+import { ResetComponent } from './reset/reset/reset.component';
 import {
   ListSallesComponent
 } from './salles/list-salles/list-salles.component';
@@ -23,6 +24,7 @@ import {
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'reset', component: ResetComponent },
   { path: 'home', component: HomeComponent },
   { path: 'utilisateurs', component: UtilisateursComponent },
   { path: 'etablissements', component: ListEtablissementsComponent },
@@ -32,4 +34,5 @@ export const routes: Routes = [
   { path: 'professeurs', component: ListProfesseursComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+
 ];

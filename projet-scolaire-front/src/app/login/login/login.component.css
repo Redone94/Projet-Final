@@ -1,0 +1,30 @@
+#card-log {
+  flex-direction: inherit;
+  background-color: rgb(233 206 209 / 24%);
+}
+
+#log {
+  margin: 250px auto 100px;
+}
+
+#title-conn {
+  line-height: 5;
+}
+
+.labelle {
+  color: #5f9699;
+}
+
+.form-control {
+  border: none;
+  border-bottom: 1px solid #b0bec5;
+  outline: none;
+  background: none;
+  padding: 0;
+  height: 30px;
+  color: rgb(5 10 36);
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}

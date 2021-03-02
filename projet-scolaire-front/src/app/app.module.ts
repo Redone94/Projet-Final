@@ -32,6 +32,7 @@ import {
   UtilisateursComponent
 } from './utilisateurs/utilisateurs/utilisateurs.component';
 import { ListMatieresComponent } from './matieres/list-matieres/list-matieres.component';
+import { ResetComponent } from './reset/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ListMatieresComponent } from './matieres/list-matieres/list-matieres.co
     ListClassesComponent,
     UtilisateursComponent,
     ListMatieresComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,

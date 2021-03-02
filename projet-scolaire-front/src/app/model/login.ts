@@ -1,0 +1,43 @@
+export class Login {
+  protected _login: string;
+  private _password: string;
+
+  constructor(login: string = '', password: string = '') {
+    this._login = login;
+    this._password = password;
+    }
+
+    /**
+    * Getter username
+    * @return {string}
+    */
+    public get login(): string {
+    return this._login;
+    }
+
+    /**
+    * Getter password
+    * @return {string}
+    */
+    public get password(): string {
+    return this._password;
+    }
+
+    /**
+    * Setter username
+    * @param {string} value
+    */
+    public set username(value: string) {
+    this._login = value;
+    }
+
+    /**
+    * Setter password
+    * @param {string} value
+    */
+    public set password(value: string) {
+    this._password = value;
+    }
+
+
+}
