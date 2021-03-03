@@ -43,7 +43,7 @@ public class Etablissement {
 	
 	@Enumerated(EnumType.STRING)
 	@JsonView(Vue.Common.class)
-	private Type_Etablissemnt TypeEtablissement;
+	private Type_Etablissement TypeEtablissement;
 	
 	@Embedded
 	private Adresse adresse;
@@ -91,12 +91,12 @@ public class Etablissement {
 	}
 
 
-	public Type_Etablissemnt getTypeEtablissement() {
+	public Type_Etablissement getTypeEtablissement() {
 		return TypeEtablissement;
 	}
 
 
-	public void setTypeEtablissement(Type_Etablissemnt typeEtablissement) {
+	public void setTypeEtablissement(Type_Etablissement typeEtablissement) {
 		TypeEtablissement = typeEtablissement;
 	}
 

@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ProjetScolaire.entity.Cours;
 import ProjetScolaire.repository.CoursRepository;
 
+@Service
 public class CoursService {
 	
 	@Autowired
@@ -21,7 +23,7 @@ public class CoursService {
 		coursRepo.save(service);
 	}
 
-	public List<Cours> allservice() {
+	public List<Cours> allcours() {
 		return coursRepo.findAll();
 	}
 

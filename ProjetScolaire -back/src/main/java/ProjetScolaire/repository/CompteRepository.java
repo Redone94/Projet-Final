@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import ProjetScolaire.entity.Compte;
 import ProjetScolaire.entity.Role;
 
-public interface CompteRepository extends JpaRepository<Compte, Integer> {
+public interface CompteRepository extends JpaRepository<Compte, String> {
 	
 	public Optional<Compte> findByLogin(String login);
 	public void deleteById(Integer id);

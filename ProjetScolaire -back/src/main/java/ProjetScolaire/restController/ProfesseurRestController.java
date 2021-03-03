@@ -86,6 +86,11 @@ public class ProfesseurRestController {
 		}
 		EmployeEnBase.setPrenom(p.getPrenom());
 		EmployeEnBase.setNom(p.getNom());
+		EmployeEnBase.setMatiere(p.getMatiere());
+		EmployeEnBase.setAdresse(p.getAdresse());
+		EmployeEnBase.setImage(p.getImage());
+		EmployeEnBase.setDatenaissance(p.getDatenaissance());
+		EmployeEnBase.setCours(p.getCours());
 		professeurService.save(EmployeEnBase);
 		return EmployeEnBase;
 	}

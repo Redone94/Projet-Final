@@ -48,7 +48,7 @@ public class Professeur {
 	
 	
 	@ManyToMany
-	@JoinTable(name="List_professeurs",joinColumns = {@JoinColumn(name="id_professeur")},inverseJoinColumns = {@JoinColumn(name="id")} )
+	@JoinTable(name="List_prof_matiere",joinColumns = {@JoinColumn(name="id_professeur")},inverseJoinColumns = {@JoinColumn(name="id_matiere")} )
 	@JsonView(Vue.Common.class)
 	private List<Matiere> matiere;
 	
@@ -57,7 +57,7 @@ public class Professeur {
 	private Adresse adresse;
 		
 	@ManyToMany
-	@JoinTable(name="List_professeurs",joinColumns = {@JoinColumn(name="id_professeur")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
+	@JoinTable(name="List_prof_cours",joinColumns = {@JoinColumn(name="id_professeur")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
 	@JsonView(Vue.Common.class)
 	private List<Cours> cours;
 	

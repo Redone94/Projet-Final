@@ -4,12 +4,12 @@ import { Roles } from "./roles.enum";
 export class Login {
   protected _login: string;
   private _password: string;
-  private roles : string;
+  roles : Roles;
 
-  constructor(login: string = '', password: string = '', roles: string='') {
+  constructor(login: string = '', password: string = '', roles?:Roles ) {
     this._login = login;
     this._password = password;
-    this.roles= roles;
+    this.roles = roles;
     }
 
     /**
@@ -44,21 +44,6 @@ export class Login {
     this._password = value;
     }
 
-    /**
-     * Getter $roles
-     * @return {string}
-     */
-	public get $roles(): string {
-		return this.roles;
-	}
-
-    /**
-     * Setter $roles
-     * @param {string} value
-     */
-	public set $roles(value: string) {
-		this.roles = value;
-	}
 
 
 

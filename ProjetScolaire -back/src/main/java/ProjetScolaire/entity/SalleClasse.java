@@ -37,7 +37,7 @@ public class SalleClasse {
 	protected Etablissement etablissement; 
 
 	@ManyToMany
-	@JoinTable(name="List_classes",joinColumns = {@JoinColumn(name="id")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
+	@JoinTable(name="List_classes_cours",joinColumns = {@JoinColumn(name="id_salleClasse")},inverseJoinColumns = {@JoinColumn(name="id_cours")} )
 	@JsonView(Vue.Common.class)
 	protected List<Cours> cours;
 	

@@ -24,7 +24,7 @@ public class SalleClasseService {
 		salleClasseRepo.save(service);
 	}
 
-	public List<SalleClasse> allservice() {
+	public List<SalleClasse> allsalleclasse() {
 		return salleClasseRepo.findAll();
 	}
 

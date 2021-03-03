@@ -33,24 +33,24 @@ public class Cours {
 	
 	
 	@ManyToMany
-	@JoinTable(name="List_matieres",joinColumns = {@JoinColumn(name="id_cours")},inverseJoinColumns = {@JoinColumn(name="id")} )
+	@JoinTable(name="List_matiere_cours",joinColumns = {@JoinColumn(name="id_cours")},inverseJoinColumns = {@JoinColumn(name="id_matiere")} )
 	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private List<Matiere> matieres;
 	
 	@ManyToMany
-	@JoinTable(name="List_classes",joinColumns = {@JoinColumn(name="id_cours")},inverseJoinColumns = {@JoinColumn(name="id")} )
+	@JoinTable(name="List_classes_cours",joinColumns = {@JoinColumn(name="id_cours")},inverseJoinColumns = {@JoinColumn(name="id_salleClasse")} )
 	//@NotEmpty
 	@JsonView(Vue.Common.class)
 	private List<SalleClasse> salleClasse;
 	
-	@OneToOne(mappedBy = "cours")
-	//@NotEmpty
+	@OneToOne
+	@JoinColumn(name="classe")
 	@JsonView(Vue.Common.class)
 	private Classe classe;
 	
 	@ManyToMany
-	@JoinTable(name="List_professeurs",joinColumns = {@JoinColumn(name="id")},inverseJoinColumns = {@JoinColumn(name="id_professeur")} )
+	@JoinTable(name="List_prof_cours",joinColumns = {@JoinColumn(name="id_cours")},inverseJoinColumns = {@JoinColumn(name="id_professeur")} )
 	@JsonView(Vue.Common.class)
 	private List<Professeur> professeur;
 	

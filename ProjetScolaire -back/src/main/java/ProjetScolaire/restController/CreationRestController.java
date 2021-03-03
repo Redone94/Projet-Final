@@ -41,7 +41,7 @@ public class CreationRestController {
 	}
 	
 	@GetMapping("/{login}")
-	public boolean mailDispo(@PathVariable("login") String login) {
+	public boolean loginDispo(@PathVariable("login") String login) {
 		return compteRepository.findByLogin(login).isPresent();
 	}
 
