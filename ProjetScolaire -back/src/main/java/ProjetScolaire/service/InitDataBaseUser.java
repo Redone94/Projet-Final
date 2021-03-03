@@ -105,16 +105,19 @@ public class InitDataBaseUser implements CommandLineRunner{
 		C1.setLogin("red");
 		C1.setPassword(passwordEncorder.encode("123"));
 		C1.setRole(Role.ROLE_ADMIN);
+		C1.setMail("radwane");
 		compteRepository.save(C1);
 		
 		C2.setLogin("moriarty");
 		C2.setPassword(passwordEncorder.encode("phys1que"));
 		C2.setRole(Role.ROLE_UTILISATEUR);
+		C2.setMail("radwane");
 		compteRepository.save(C2);
 		
 		C3.setLogin("ombrage");
 		C3.setPassword(passwordEncorder.encode("potters"));
 		C3.setRole(Role.ROLE_UTILISATEUR);
+		C3.setMail("radwane");
 		compteRepository.save(C3);
 		
 		
@@ -133,6 +136,8 @@ public class InitDataBaseUser implements CommandLineRunner{
 		p1.setCompte(C3);
 		p1.setAdresse(a2);
 		profRepo.save(p1);
+		
+		
 		
 		
 		

@@ -9,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.ui.Model;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,7 +30,6 @@ import ProjetScolaire.exception.ProfesseurNotFoundException;
 import ProjetScolaire.exception.UserInvalidException;
 
 import ProjetScolaire.service.CompteService;
-import ProjetScolaire.service.UserDetailsWithCompte;
 
 @RestController
 @RequestMapping("/api/compte")
@@ -92,7 +90,7 @@ public class CompteRestController {
 		return CompteEnBase;
 	}
 
-	@DeleteMapping("/{Loginl}")
+	@DeleteMapping("/{login}")
 	public ResponseEntity<Void> delete(@PathVariable("login") String login) {
 		Compte CompteEnBase = compteService.findByLogin(login);
 		if (CompteEnBase.getId() == null) {

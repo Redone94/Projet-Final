@@ -34,15 +34,25 @@ public class Compte {
 	@NotEmpty
 	@Column(name="password", length = 150, nullable=false)
 	protected String password;
+	
+	@NotEmpty
+	@Column(name="mail")
+	protected String mail;
+	
+	
+	@Column(name="tel")
+	protected int tel;
 		
 	@Enumerated(EnumType.STRING)
 	@JsonView(Vue.Common.class)
 	protected Role role;
 	
+	
 	@ManyToOne
 	@JsonView(Vue.Common.class)
 	protected Etablissement etablissement;
 	
+	@JsonView(Vue.Versionexist .class)
 	@Version
 	protected int version;
 
@@ -56,13 +66,18 @@ public class Compte {
 		this.password = password;
 	}
 
-	public Compte(String login, String password, Role role, Etablissement etablissement) {
-		super();
+
+	public Compte( @NotEmpty String login, @NotEmpty String password, @NotEmpty String mail, int tel,
+			Role role, Etablissement etablissement) {
 		this.login = login;
 		this.password = password;
+		this.mail = mail;
+		this.tel = tel;
 		this.role = role;
 		this.etablissement = etablissement;
+		
 	}
+	
 
 	public Integer getId() {
 		return id;
@@ -105,6 +120,21 @@ public class Compte {
 	}
 	
 
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public int getTel() {
+		return tel;
+	}
+
+	public void setTel(int tel) {
+		this.tel = tel;
+	}
 
 	public Etablissement getEtablissement() {
 		return etablissement;
@@ -114,11 +144,19 @@ public class Compte {
 		this.etablissement = etablissement;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((etablissement == null) ? 0 : etablissement.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((role == null) ? 0 : role.hashCode());
+		result = prime * result + tel;
+		result = prime * result + version;
 		return result;
 	}
 
@@ -131,13 +169,40 @@ public class Compte {
 		if (getClass() != obj.getClass())
 			return false;
 		Compte other = (Compte) obj;
+		if (etablissement == null) {
+			if (other.etablissement != null)
+				return false;
+		} else if (!etablissement.equals(other.etablissement))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (login == null) {
+			if (other.login != null)
+				return false;
+		} else if (!login.equals(other.login))
+			return false;
+		if (mail == null) {
+			if (other.mail != null)
+				return false;
+		} else if (!mail.equals(other.mail))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (role != other.role)
+			return false;
+		if (tel != other.tel)
+			return false;
+		if (version != other.version)
+			return false;
 		return true;
 	}
+
 
 	
 	

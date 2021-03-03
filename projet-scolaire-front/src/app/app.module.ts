@@ -32,6 +32,7 @@ import {
 import { ListMatieresComponent } from './matieres/list-matieres/list-matieres.component';
 import { ResetComponent } from './reset/reset/reset.component';
 import { LoginComponent } from './login/login/login.component';
+import { AccueilAdminComponent } from './home/accueil-admin/accueil-admin.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { LoginComponent } from './login/login/login.component';
     ListMatieresComponent,
     ResetComponent,
     LoginComponent,
+    AccueilAdminComponent,
   ],
   imports: [
     BrowserModule,
