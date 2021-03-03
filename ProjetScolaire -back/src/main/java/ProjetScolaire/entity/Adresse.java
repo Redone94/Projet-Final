@@ -2,11 +2,15 @@ package ProjetScolaire.entity;
 
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
 public class Adresse {
-	
+	@JsonView(Vue.Common.class)
 	protected int numero;
+	@JsonView(Vue.Common.class)
 	protected String voie;
+	@JsonView(Vue.Common.class)
 	protected String ville;
 	
 	public Adresse() {

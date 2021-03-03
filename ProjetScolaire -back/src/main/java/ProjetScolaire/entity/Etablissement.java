@@ -46,6 +46,7 @@ public class Etablissement {
 	private Type_Etablissement TypeEtablissement;
 	
 	@Embedded
+	@JsonView(Vue.Common.class)
 	private Adresse adresse;
 	
 	

@@ -1,1 +1,32 @@
 <p>edit-professeurs works!</p>
+
+<div>
+    <div>id:<input [ngModel]="professeur.id" readonly /></div>
+    <div>nom:<input [(ngModel)]="professeur.nom" /></div>
+    <div>prenom:<input [(ngModel)]="professeur.prenom" /></div>
+   <!-- <div>date de naissance:<input [(ngModel)]="professeur.date" /></div> -->
+
+   <div>Adresse:
+   <div>numero:<input [(ngModel)]="professeur.adresse.numero" /></div>
+   <div>voie:<input [(ngModel)]="professeur.adresse.voie" /></div>
+   <div>ville<input [(ngModel)]="professeur.adresse.ville" /></div>
+   </div>
+
+   <div>Etablissement:
+    <select>
+      <option *ngFor="let e of etablissement">
+        <input [(ngModel)]="professeur.etablissement.id.nom" />
+      </option>
+    </select>
+  </div>
+
+    <div>login:<input [(ngModel)]="professeur.compte.login" /></div>
+    <div>password:<input [(ngModel)]="professeur.compte.password" /></div>
+    
+    <div>
+      <button (click)="save()">enregistrer</button>
+      <button [routerLink]="['/professeur']" routerLinkActive="active">
+        retour
+      </button>
+    </div>
+  </div>
