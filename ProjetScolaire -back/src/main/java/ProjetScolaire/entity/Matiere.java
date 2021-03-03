@@ -10,21 +10,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
-import javax.validation.constraints.NotEmpty;
+
 
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Matiere {
 	
-	
+	@JsonView(Vue.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	//@NotEmpty
 	@JsonView(Vue.Common.class)
-	private String nomMatiere;
+	private String nom;
 	
 	//@NotEmpty
 	@JsonView(Vue.Common.class)
@@ -43,6 +43,19 @@ public class Matiere {
 	
 	@Version
 	protected int version;
+	
+	
+
+	public Matiere(Integer id, String nom, String couleur, List<Professeur> professeurs, List<Cours> cours,
+			int version) {
+		this.id = id;
+		this.nom = nom;
+		this.couleur = couleur;
+		this.professeurs = professeurs;
+		this.cours = cours;
+		this.version = version;
+	}
+
 
 	public Matiere() {
 		
@@ -60,11 +73,11 @@ public class Matiere {
 
 
 	public String getNomMatiere() {
-		return nomMatiere;
+		return nom;
 	}
 
-	public void setNomMatiere(String nomMatiere) {
-		this.nomMatiere = nomMatiere;
+	public void setNomMatiere(String nom) {
+		this.nom = nom;
 	}
 
 	public String getCouleur() {
@@ -100,7 +113,7 @@ public class Matiere {
 		result = prime * result + ((couleur == null) ? 0 : couleur.hashCode());
 		result = prime * result + ((cours == null) ? 0 : cours.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nomMatiere == null) ? 0 : nomMatiere.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((professeurs == null) ? 0 : professeurs.hashCode());
 		result = prime * result + version;
 		return result;
@@ -131,10 +144,10 @@ public class Matiere {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nomMatiere == null) {
-			if (other.nomMatiere != null)
+		if (nom == null) {
+			if (other.nom != null)
 				return false;
-		} else if (!nomMatiere.equals(other.nomMatiere))
+		} else if (!nom.equals(other.nom))
 			return false;
 		if (professeurs == null) {
 			if (other.professeurs != null)

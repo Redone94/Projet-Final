@@ -1,1 +1,38 @@
-<p>list-matieres works!</p>
+<!-- <div class="page-wrapper">
+  <app-sidebar></app-sidebar>
+  <button *ngIf="user()" class="btn btn-danger" (click)="logout()">deconnexion</button>
+
+
+</div>
+<router-outlet></router-outlet> -->
+<h3>Liste des matieres</h3>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th> Id </th>
+          <th> Matiere </th>
+          <th> Couleur </th>
+        </tr>
+      </thead>
+      <tbody>
+
+    <tr *ngFor = "let m of matieres">
+      <td> {{m.id}} </td>
+      <td> {{m.nom}}</td>
+      <td> {{m.couleur}}</td>
+
+
+      <td><button type="button" class="btn btn-outline-danger"(click)="delete()">supprimer</button></td>
+    </tr>
+  </tbody>
+
+
+  </table>
+  <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/matieres', 'edit']" routerLinkActive="active">ajouter</button></td>
+  <button type="button" class="btn btn-outline-warning"[routerLink]="['/matieres', 'edit']" routerLinkActive="active"> modifier </button>
+
+</div>
+
+

@@ -15,7 +15,7 @@ public class MatiereService {
 	@Autowired
 	private MatiereRepository matiereRepo;
 	
-	public void creation(Matiere service) {
+	public void creationMatiere(Matiere service) {
 		matiereRepo.save(service);
 	}
 	
@@ -23,7 +23,7 @@ public class MatiereService {
 		matiereRepo.save(service);
 	}
 
-	public List<Matiere> allservice() {
+	public List<Matiere> allMatiere() {
 		return matiereRepo.findAll();
 	}
 
@@ -35,7 +35,7 @@ public class MatiereService {
 		matiereRepo.deleteById(id);
 	}
 
-	public Matiere findById(Integer id) {
+	public Matiere find(Integer id) {
 		Optional<Matiere> opt = matiereRepo.findById(id);
 		if (opt.isPresent()) {
 			return opt.get();
@@ -45,6 +45,5 @@ public class MatiereService {
 	public Matiere save(Matiere m) {
 		return matiereRepo.save(m);
 	}
-
 	
 }

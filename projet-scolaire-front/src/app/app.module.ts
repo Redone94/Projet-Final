@@ -22,16 +22,15 @@ import {
   ListProfesseursComponent
 } from './professeurs/list-professeurs/list-professeurs.component';
 import { routes } from './routes';
-import {
-  ListSallesComponent
-} from './salles/list-salles/list-salles.component';
+import { ListSallesComponent} from './salles/list-salles/list-salles.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import {
-  UtilisateursComponent
-} from './utilisateurs/utilisateurs/utilisateurs.component';
+import { UtilisateursComponent} from './utilisateurs/utilisateurs/utilisateurs.component';
 import { ListMatieresComponent } from './matieres/list-matieres/list-matieres.component';
 import { ResetComponent } from './reset/reset/reset.component';
 import { LoginComponent } from './login/login/login.component';
+import { EditMatieresComponent } from './matieres/edit-matieres/edit-matieres.component';
+import { EditClassesComponent } from './classes/edit-classes/edit-classes.component';
+import { EditSallesComponent } from './salles/edit-salles/edit-salles.component';
 import { AccueilAdminComponent } from './home/accueil-admin/accueil-admin.component';
 
 
@@ -49,6 +48,9 @@ import { AccueilAdminComponent } from './home/accueil-admin/accueil-admin.compon
     ListMatieresComponent,
     ResetComponent,
     LoginComponent,
+    EditMatieresComponent,
+    EditClassesComponent,
+    EditSallesComponent,
     AccueilAdminComponent,
   ],
   imports: [
