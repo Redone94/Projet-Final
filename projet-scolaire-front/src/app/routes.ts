@@ -6,10 +6,8 @@ import {
 import {
   ListEtablissementsComponent
 } from './etablissements/list-etablissements/list-etablissements.component';
-import {
-  AccueilAdminComponent
-} from './home/accueil-admin/accueil-admin.component';
-import { HomeComponent } from './home/home/home.component';
+import { AccueilAdminComponent } from './home/accueil-admin.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login/login.component';
 import {
   ListMatieresComponent
@@ -31,12 +29,12 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset', component: ResetComponent },
   {
-    path: 'home/accueil-admin',
+    path: 'admin',
     component: AccueilAdminComponent,
     canActivate: [AdminGuardService],
   },
   {
-    path: 'home/home',
+    path: 'home',
     component: HomeComponent,
     canActivate: [UserGuardService],
   },
