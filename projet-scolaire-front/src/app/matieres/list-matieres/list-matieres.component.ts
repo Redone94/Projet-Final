@@ -27,16 +27,23 @@ export class ListMatieresComponent implements OnInit {
       console.log(data);
     });
   }
- //public delete(){}
+  public delete(id: number) {
+    this.matiereService.delete(id).subscribe((result) => {
+      this.init();
+    });
+  }
+
 
  public findById(){}
 
 
-   public delete(id: number) {
+
+
+  /* public delete(id: number) {
      this.matiereService.delete(id).subscribe((result) => {
        this.init();
      });
-   }
+   }*/
 
     }
 

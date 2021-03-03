@@ -22,10 +22,20 @@ export class MatiereService {
     return this.http.get<Matiere[]>(this.url, { headers: this.HttpHeaders });
   }
 
-  public delete(id: number): Observable<void> {
-    return this.http.delete<void>(this.url + '/'+id, {
-      headers: this.HttpHeaders,
-    });
+  /*public delete(id: number): Observable<void> {
+    console.log("idvalue:"+id);
+    let endPoints = "/posts/1";
+    return this.http.delete<void>(this.url + '/'+endPoints),
+    {
+      headers: this.httpHeaders,
+    });*/
+
+
+    public delete(id:number): Observable<void> {
+      return this.http.delete<void>(this.url + '/' + id, {
+        headers: this.HttpHeaders,
+      });
+
   }
 
   public update(matiere: Matiere): Observable<Matiere> {
@@ -36,7 +46,7 @@ export class MatiereService {
 
   public insert(matiere: Matiere): Observable<Matiere> {
     const o = {
-
+      id: matiere.id,
       nom: matiere.nom,
       couleur: matiere.couleur,
     };

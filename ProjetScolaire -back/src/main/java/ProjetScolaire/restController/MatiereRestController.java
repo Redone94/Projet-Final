@@ -94,7 +94,7 @@ public class MatiereRestController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
 		Matiere MatiereEnBase = matiereService.find(id);
-		if (MatiereEnBase.getId() != null) {
+		if (MatiereEnBase.getId() == null) {
 			throw new MatiereNotFoundException();
 		}
 		matiereService.delete(id);
