@@ -50,7 +50,10 @@ export const routes: Routes = [
    canActivate: [AdminGuardService],
   },
 
-  { path: 'salles', component: ListSallesComponent, },
+  { path: 'salles',  
+   component: ListSallesComponent,
+   canActivate: [AdminGuardService,UserGuardService],
+  },
   {
     path: 'salles/edit/:id',
     component: EditSallesComponent,
