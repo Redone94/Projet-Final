@@ -22,6 +22,7 @@ import { UtilisateursComponent } from './utilisateurs/utilisateurs/utilisateurs.
 import { EditMatieresComponent } from './matieres/edit-matieres/edit-matieres.component';
 import { EditClassesComponent } from './classes/edit-classes/edit-classes.component';
 import { EditSallesComponent } from './salles/edit-salles/edit-salles.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EditSallesComponent } from './salles/edit-salles/edit-salles.component'
     EditSallesComponent,
     AccueilAdminComponent,
     HomeComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

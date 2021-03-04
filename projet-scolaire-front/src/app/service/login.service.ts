@@ -11,8 +11,12 @@ import { Login } from '../model/login';
 export class LoginService {
   private url: string = 'http://localhost:8080/projetscolaire/api/login';
   private changePasswordUrl: string =
-    'http://localhost:8080/projetscolaire/api/reset';
+    'http://localhost:8080/projetscolaire/api/compte/changePassword';
+  private resetPasswordUrl: string =
+    'http://localhost:8080/projetscolaire/api/login/reset';
   roles: string;
+
+  private httpHeaders: HttpHeaders;
 
   constructor(private http: HttpClient) {}
 
@@ -33,15 +37,20 @@ export class LoginService {
   public checkLogin(login: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.url}/${login}`);
   }
-  changePassword(model: any) {
-    return this.http.post(this.auth + 'changepassword', model);
+
+  changePassword(model: any, password: string) {
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+    });
+    return this.http.put<Login>(
+      `${this.changePasswordUrl}/${password}`,
+      model,
+      { headers: httpHeaders }
+    );
   }
 
-  resetPassword(model: any) {
-    let headers = new HttpHeaders({
-      changePasswordUrl: this.changePasswordUrl,
-    });
-    let options = { headers: headers };
-    return this.http.post(this.auth + 'resetpassword', model, options);
+  resetPassword(model: any, o: object) {
+    return this.http.post(this.resetPasswordUrl, o, model);
   }
 }

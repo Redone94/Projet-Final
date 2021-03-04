@@ -1,12 +1,9 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -57,7 +54,7 @@ export class LoginComponent implements OnInit {
         );
         sessionStorage.setItem('login', this.loginCtrl.value);
 
-        this.router.navigate(['/reset']);
+        this.router.navigate(['/changepassword']);
       },
 
       (error) => {
@@ -71,5 +68,8 @@ export class LoginComponent implements OnInit {
   }
   public passwordIsInvalid(): boolean {
     return this.pwdCtrl.dirty && this.pwdCtrl.invalid;
+  }
+  public reset() {
+    return this.router.navigate(['/reset']);
   }
 }

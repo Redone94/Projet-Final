@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,8 +30,8 @@ import ProjetScolaire.entity.Compte;
 import ProjetScolaire.entity.Vue;
 import ProjetScolaire.exception.ProfesseurNotFoundException;
 import ProjetScolaire.exception.UserInvalidException;
-
 import ProjetScolaire.service.CompteService;
+import ProjetScolaire.service.UserDetailsWithCompte;
 
 @RestController
 @RequestMapping("/api/compte")
@@ -37,7 +39,8 @@ import ProjetScolaire.service.CompteService;
 public class CompteRestController {
 	@Autowired
 	private CompteService compteService;
-	
+	@Autowired
+	private PasswordEncoder passwordEncorder;
 //	
 //	@GetMapping({ "", "/" })
 //	@JsonView(Vue.Common.class)
@@ -99,5 +102,14 @@ public class CompteRestController {
 		compteService.delete(login);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-	
+	@PutMapping("/changePassword/{password}")
+	@JsonView(Vue.Common.class)
+	public Compte getComptesTEST(Model model,Authentication authentif,@PathVariable("password") String password) {
+		UserDetailsWithCompte compte= (UserDetailsWithCompte) authentif.getPrincipal();
+		Compte c=compte.getCompte();
+		
+		c.setPassword(passwordEncorder.encode(password));
+		compteService.save(c);
+		return c;
+	}
 }

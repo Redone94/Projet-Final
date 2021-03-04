@@ -8,18 +8,16 @@ import { LoginService } from 'src/app/service/login.service';
   styleUrls: ['./reset.component.css'],
 })
 export class ResetComponent implements OnInit {
+  model: any = {};
+
   constructor(private authService: LoginService) {}
 
   ngOnInit(): void {}
   onSubmit(f: NgForm) {
-    const resetPasswordObserver = {
-      next: (x) => {
-        console.log('Check email to change password');
-      },
-      error: (err) => {
-        console.log(err);
-      },
+    const o = {
+      email: f.value.email,
+      numero: f.value.numberphone,
     };
-    this.authService.resetPassword(f.value).subscribe(resetPasswordObserver);
+    this.authService.resetPassword(this.model, o);
   }
 }

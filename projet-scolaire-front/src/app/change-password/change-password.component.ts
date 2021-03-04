@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { LoginService } from '../service/login.service';
 
@@ -9,14 +10,12 @@ import { LoginService } from '../service/login.service';
 })
 export class ChangePasswordComponent implements OnInit {
   model: any = {};
-  constructor(
-    private route: ActivatedRoute,
-    private authService: LoginService
-  ) {}
+  password: string;
+  constructor(private authService: LoginService) {}
 
   ngOnInit(): void {}
-  changePassword() {
-    this.authService.changePassword(this.model).subscribe(
+  changePassword(f: NgForm) {
+    this.authService.changePassword(this.model, f.value.password).subscribe(
       () => {},
       (error) => {
         console.log(error);
