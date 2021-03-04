@@ -42,5 +42,30 @@ body {
 }
 
 .bg-light {
-    background-color: lightyellow!important;
+    background-color: #252c37!important;
+}
+
+.list-group-flush>.list-group-item {
+    border-width: 0 0 1px;
+    color: beige;
+}
+
+element.style {}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+    color: beige;
+}
+
+.navbar-light .navbar-nav .show>.nav-link,
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active {
+    color: rgb(226 216 216);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(226 216 216);
+    ;
 }
