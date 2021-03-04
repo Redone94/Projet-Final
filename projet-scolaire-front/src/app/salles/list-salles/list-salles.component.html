@@ -25,13 +25,14 @@
 
 
       <td><button type="button" class="btn btn-outline-danger"(click)="delete(s.id)">supprimer</button></td>
+      <td> <button type="button" class="btn btn-outline-warning"[routerLink]="['/salles', 'edit']" routerLinkActive="active"> modifier </button></td>
     </tr>
   </tbody>
 
 
   </table>
   <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/salles', 'edit']" routerLinkActive="active">ajouter</button></td>
-  <button type="button" class="btn btn-outline-warning"[routerLink]="['/salles', 'edit']" routerLinkActive="active"> modifier </button>
+
 
 </div>
 

@@ -5,7 +5,7 @@ export class Classe {
   private _profPrincipal: string;
 
 
-	constructor(id: number, nom: string, profPrincipal: string) {
+	constructor(id?: number, nom: string='', profPrincipal: string='') {
 		this._id = id;
 		this._nom = nom;
 		this._profPrincipal = profPrincipal;

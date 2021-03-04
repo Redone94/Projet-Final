@@ -13,21 +13,21 @@ export class ListClassesComponent implements OnInit {
   classes: Classe[] = [];
 
 
-  constructor(private matiereService : ClasseService, private router: Router) { }
+  constructor(private classeService : ClasseService, private router: Router) { }
 
   ngOnInit(): void {
     this.init();
   }
 
   public init() {
-    this.matiereService.allClasse().subscribe((data) => {
+    this.classeService.allClasse().subscribe((data) => {
       this.classes = data;
 
       console.log(data);
     });
   }
   public delete(id: number) {
-    this.matiereService.delete(id).subscribe((result) => {
+    this.classeService.delete(id).subscribe((result) => {
       this.init();
     });
   }

@@ -14,6 +14,7 @@ import { ListSallesComponent } from './salles/list-salles/list-salles.component'
 import { AdminGuardService } from './service/admin-guard.service';
 import { UserGuardService } from './service/user-guard.service';
 import { UtilisateursComponent } from './utilisateurs/utilisateurs/utilisateurs.component';
+import { EditSallesComponent } from './salles/edit-salles/edit-salles.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -49,7 +50,13 @@ export const routes: Routes = [
    canActivate: [AdminGuardService],
   },
 
-  { path: 'salles', component: ListSallesComponent },
+  { path: 'salles', component: ListSallesComponent, },
+  {
+    path: 'salles/edit',
+    component: EditSallesComponent,
+   canActivate: [AdminGuardService],
+  },
+
 
   { path: 'classes', component: ListClassesComponent },
   {

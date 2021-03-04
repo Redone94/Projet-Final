@@ -36,6 +36,16 @@ public class Classe {
 	@Version
 	protected int version;
 	
+	
+	
+	public Classe(Integer id, String nom, String profPrincipal, Cours cours, int version) {
+		this.id = id;
+		this.nom = nom;
+		this.profPrincipal = profPrincipal;
+		this.cours = cours;
+		this.version = version;
+	}
+
 	public Classe()
 	{
 		
