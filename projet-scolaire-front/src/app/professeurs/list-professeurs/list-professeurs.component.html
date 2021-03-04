@@ -1,24 +1,40 @@
-<p>list-professeurs</p>
-<button class="btn btn-link" (click)="displayNew()">ajouter professeur</button>
+<p>liste des professeurs</p>
+
+<div>
 <table>
-  <tr>
+  <thead>
+    <tr>
     <th>#</th>
     <th>Nom</th>
     <th>Prenom</th>
+    <th>Date de naissance</th>
+    <th>Adresse</th>
+    <th>Matiere</th>
     <th></th>
     <th></th>
   </tr>
+</thead>
+
+<tbody>
+<tr>
     <tr *ngFor="let p of professeur">
-      <td>{{ p.id }}</td>
+      <td>{{ p.id_professeur }}</td>
       <td>{{ p.nom }}</td>
       <td>{{ p.prenom }}</td>
+      <td>{{ p.datenaissance }}</td>
+      <td>{{ p.adresse.numero}}&nbsp;{{ p.adresse.voie}}&nbsp;{{ p.adresse.cp}}&nbsp;{{ p.adresse.ville}}</td>
+      <td>{{ p.matiere.nom }}</td>
       <td>
         <button
-          [routerLink]="['/professeur', 'edit', e.id]" routerLinkActive="active">
+          [routerLink]="['/professeur', 'edit', p.id]" routerLinkActive="active">
           modifier</button>
       </td>
       <td>
         <button (click)="delete(p.id)">supprimer</button>
       </td>
     </tr>
+  </tbody>
   </table>
+  <button class="btn btn-link" (click)="displayNew()">ajouter professeur</button>
+
+</div>

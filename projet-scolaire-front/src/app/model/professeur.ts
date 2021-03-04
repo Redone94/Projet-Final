@@ -16,7 +16,8 @@ export class Professeur {
 
 
 	constructor(id?: number,nom: string='', prenom: string='', datenaissance?:Date, adresse?: Adresse, compte?: Compte, matiere?: ListMatieresComponent, logo?: symbol) {
-		this._nom = nom;
+		this._id=id;
+        this._nom = nom;
 		this._prenom = prenom;
 		this._adresse = adresse;
 		this._compte = compte;

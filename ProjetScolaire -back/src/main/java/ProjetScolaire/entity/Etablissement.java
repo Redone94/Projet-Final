@@ -33,7 +33,7 @@ public class Etablissement {
 
 	
 	@JsonView(Vue.Common.class)
-	private int numeroTel;
+	private String numeroTel;
 	
 	@OneToMany(mappedBy = "etablissement")
 	private List<Compte> compte;
@@ -82,12 +82,12 @@ public class Etablissement {
 	}
 
 
-	public int getNumeroTel() {
+	public String getNumeroTel() {
 		return numeroTel;
 	}
 
 
-	public void setNumeroTel(int numeroTel) {
+	public void setNumeroTel(String numeroTel) {
 		this.numeroTel = numeroTel;
 	}
 
@@ -160,7 +160,6 @@ public class Etablissement {
 		result = prime * result + ((compte == null) ? 0 : compte.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		result = prime * result + numeroTel;
 		result = prime * result + ((salleclasse == null) ? 0 : salleclasse.hashCode());
 		result = prime * result + version;
 		return result;

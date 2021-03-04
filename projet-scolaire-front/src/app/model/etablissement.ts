@@ -6,7 +6,7 @@ import { TypeEtablissement } from "./type-etablissement.enum";
 export class Etablissement {
     private _id: number;
     private _nom: string;
-    private _numeroTel: number;
+    private _numeroTel: string;
 
     private _adresse: Adresse;
     typeEtab :TypeEtablissement;
@@ -15,13 +15,14 @@ export class Etablissement {
     private _logo : string;
 
 
-	constructor(id?: number, nom: string='', numeroTel?: number, adresse?: Adresse, compte?: Compte, salleClasse?:ListSallesComponent,  logo: string='') {
+	constructor(id?: number, nom: string='', numeroTel: string='', adresse?: Adresse, compte?: Compte, salleClasse?:ListSallesComponent,  logo: string='', typeEtab?:TypeEtablissement) {
 		this._nom = nom;
 		this._numeroTel = numeroTel;
 		this._adresse = adresse;
 		this._compte = compte;
 		this._salleClasse = salleClasse;
 		this._logo = logo;
+        this.typeEtab=typeEtab;
 	}
 
     /**
@@ -46,14 +47,6 @@ export class Etablissement {
      */
 	public get nom(): string {
 		return this._nom;
-	}
-
-    /**
-     * Getter numeroTel
-     * @return {number}
-     */
-	public get numeroTel(): number {
-		return this._numeroTel;
 	}
 
     /**
@@ -86,14 +79,6 @@ export class Etablissement {
      */
 	public set nom(value: string) {
 		this._nom = value;
-	}
-
-    /**
-     * Setter numeroTel
-     * @param {number} value
-     */
-	public set numeroTel(value: number) {
-		this._numeroTel = value;
 	}
 
     /**
@@ -134,6 +119,22 @@ export class Etablissement {
      */
 	public set salleClasse(value: ListSallesComponent) {
 		this._salleClasse = value;
+	}
+
+    /**
+     * Getter numeroTel
+     * @return {string}
+     */
+	public get numeroTel(): string {
+		return this._numeroTel;
+	}
+
+    /**
+     * Setter numeroTel
+     * @param {string} value
+     */
+	public set numeroTel(value: string) {
+		this._numeroTel = value;
 	}
 
     

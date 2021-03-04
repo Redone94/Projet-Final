@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { data } from 'jquery';
 import { Professeur } from 'src/app/model/professeur';
 import { ProfesseurService } from 'src/app/service/professeur.service';
@@ -11,10 +12,10 @@ import { ProfesseurService } from 'src/app/service/professeur.service';
 })
 export class ListProfesseursComponent implements OnInit {
 
-  professeur: Professeur[]=[];
+  professeur: Professeur[] = [];
   showNew: boolean = false;
 
-  constructor(private professeurService: ProfesseurService) { }
+  constructor(private professeurService: ProfesseurService, private router: Router) { }
 
   ngOnInit(): void {
     this.initList();
@@ -30,6 +31,8 @@ public delete(id: number){
   this.initList();
   });
 }
+
+public findById(){}
 
 public displayNew() {
   this.showNew = !this.showNew;

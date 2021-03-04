@@ -1,1 +1,38 @@
-<p>list-etablissements works!</p>
+<p>liste de nos etablissements</p>
+
+<div>
+    <table>
+      <thead>
+        <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Etablissement</th>
+        <th>Numero de telephone</th>
+        <th>Adresse</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+    <tr>
+        <tr *ngFor="let e of etablissement">
+          <td>{{ e.id }}</td>
+          <td>{{ e.nom }}</td>
+          <td>{{ e.TypeEtablissement }}</td>
+          <td>{{ e.numeroTel }}</td>
+          <td>{{ e.adresse.numero}}&nbsp;{{ e.adresse.voie}}&nbsp;{{ e.adresse.cp}}&nbsp;{{ e.adresse.ville}}</td>
+          <td>
+            <button
+              [routerLink]="['/etablissement', 'edit', e.id]" routerLinkActive="active">
+              modifier</button>
+          </td>
+          <td>
+            <button (click)="delete(e.id)">supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+      <button class="btn btn-link" (click)="displayNew()">ajouter un etablissement</button>
+    
+    </div>

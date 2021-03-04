@@ -10,6 +10,10 @@ public class Adresse {
 	protected int numero;
 	@JsonView(Vue.Common.class)
 	protected String voie;
+	
+	@JsonView(Vue.Common.class)
+	protected int cp;
+	
 	@JsonView(Vue.Common.class)
 	protected String ville;
 	
@@ -17,9 +21,12 @@ public class Adresse {
 		super();
 	}
 
-
-	public Adresse(int numero, String voie, String ville) {
+	public Adresse(int numero, String voie, int cp, String ville) {
 		super();
+		this.numero = numero;
+		this.voie = voie;
+		this.cp = cp;
+		this.ville = ville;
 	}
 
 
@@ -52,6 +59,14 @@ public class Adresse {
 		this.ville = ville;
 	}
 
+
+	public int getCp() {
+		return cp;
+	}
+
+	public void setCp(int cp) {
+		this.cp = cp;
+	}
 
 	@Override
 	public int hashCode() {

@@ -13,28 +13,25 @@ export class ProfesseurService {
 
   private httpHeaders: HttpHeaders;
 
-  constructor(private httpClient: HttpClient) { 
-    this.httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
-
-    });
-
+  constructor(private http: HttpClient) { 
   }
 
   public allProfesseur(): Observable<Professeur[]>{
-    console.log(sessionStorage.getItem('tokenId'));
-    return this.httpClient.get<Professeur[]>(this.url);
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+    });
+    return this.http.get<Professeur[]>(this.url,{ headers:httpHeaders } );
 
   }
   public delete(id: number): Observable<void>{
-    return this.httpClient.delete<void>(this.url + '/' +id);
+    return this.http.delete<void>(this.url + '/' +id);
   }
   public findById(id:number): Observable<Professeur>{
-    return this.httpClient.get<Professeur>(this.url + '/'+id);
+    return this.http.get<Professeur>(this.url + '/'+id);
   }
   public update(professeur: Professeur): Observable<Professeur> {
-   return this.httpClient.put<Professeur>(`${this.url}/${professeur.id}`, professeur);
+   return this.http.put<Professeur>(`${this.url}/${professeur.id}`, professeur);
  }
  public insert(professeur: Professeur): Observable<Professeur>{
   const o ={
@@ -49,6 +46,7 @@ matiere:[
 adresse: {
 numero: professeur.adresse.numero,
 voie: professeur.adresse.voie,
+cp: professeur.adresse.cp,
 ville:professeur.adresse.ville,
 },
 
@@ -62,6 +60,6 @@ etablissement:professeur.compte.etablissement,
 
 }
   };
-  return this.httpClient.post<Professeur>(this.url,o);
+  return this.http.post<Professeur>(this.url,o);
 }
 }
