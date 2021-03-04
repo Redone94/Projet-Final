@@ -1,5 +1,7 @@
 package ProjetScolaire.restController;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import ProjetScolaire.entity.Compte;
 import ProjetScolaire.entity.Reset;
 import ProjetScolaire.entity.Vue;
+import ProjetScolaire.repository.CompteRepository;
 import ProjetScolaire.service.CompteService;
 import ProjetScolaire.service.UserDetailsWithCompte;
 
@@ -27,6 +30,8 @@ public class LoginRestController {
 
 	@Autowired
 	private CompteService compteService;
+	@Autowired
+	private CompteRepository userRepo;
 	
 	@GetMapping("")
 	@JsonView(Vue.Versionexist.class)
@@ -35,15 +40,20 @@ public class LoginRestController {
 		
 		return new ResponseEntity<Compte>(compte.getCompte(), HttpStatus.OK);
 	}
+	
 	@PostMapping("/reset")
 	@JsonView(Vue.Common.class)
-	public void resetCompte(@RequestBody Reset o) {
+	public ResponseEntity<Compte> resetCompte(@RequestBody Reset o) {
 		String email=o.getEmail();
 		String numero=o.getNumero();
-//		System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-//		System.out.println(email);
-		Compte c= new Compte();
-		// find by email and check phone number if correct//
+		System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+		System.out.println(email);
+	Compte c =userRepo.findByMail(email);
+	String tel=c.getTel();
+	if(tel==numero) {
+		return new ResponseEntity<Compte>(c, HttpStatus.OK);
+	}
+	return new ResponseEntity<Compte>(c, HttpStatus.NOT_FOUND);
 		
 	}
 }

@@ -13,6 +13,7 @@ public interface CompteRepository extends JpaRepository<Compte, String> {
 	public Optional<Compte> findByLogin(String login);
 	public void deleteById(Integer id);
 	public List<Compte> findAllByRole(Role role);
+	public Compte findByMail(String mail);
 //	@Query("select c from Compte c left join fetch c.role where c.login=:login")
 //	public Optional<Compte> findByLoginWithRole(@Param("login") String login);
 

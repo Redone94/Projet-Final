@@ -41,7 +41,7 @@ public class Compte {
 	
 	
 	@Column(name="tel")
-	protected int tel;
+	protected String tel;
 		
 	@Enumerated(EnumType.STRING)
 	@JsonView(Vue.Common.class)
@@ -70,7 +70,7 @@ public class Compte {
 	}
 
 
-	public Compte( @NotEmpty String login, @NotEmpty String password, @NotEmpty String mail, int tel,
+	public Compte( @NotEmpty String login, @NotEmpty String password, @NotEmpty String mail, String tel,
 			Role role, Etablissement etablissement) {
 		this.login = login;
 		this.password = password;
@@ -131,11 +131,11 @@ public class Compte {
 		this.mail = mail;
 	}
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 
@@ -167,7 +167,7 @@ public class Compte {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + (statut ? 1231 : 1237);
-		result = prime * result + tel;
+		result = prime * result + ((tel == null) ? 0 : tel.hashCode());
 		result = prime * result + version;
 		return result;
 	}
@@ -210,12 +210,16 @@ public class Compte {
 			return false;
 		if (statut != other.statut)
 			return false;
-		if (tel != other.tel)
+		if (tel == null) {
+			if (other.tel != null)
+				return false;
+		} else if (!tel.equals(other.tel))
 			return false;
 		if (version != other.version)
 			return false;
 		return true;
 	}
+
 
 	
 	
