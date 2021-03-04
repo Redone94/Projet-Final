@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Salle } from 'src/app/model/salle';
 import { SalleService } from 'src/app/service/salle.service';
 
@@ -19,7 +20,10 @@ export class EditSallesComponent implements OnInit {
   @Output('cancel')
   cancelEvent: EventEmitter<void> = new EventEmitter();
 
-  constructor(private salleService: SalleService) {}
+  constructor(private salleService: SalleService,
+    private activatedRoute: ActivatedRoute,
+  private router: Router,
+  ) {}
 
   ngOnInit(): void {
     if (!this.salle.id) {
@@ -46,15 +50,17 @@ export class EditSallesComponent implements OnInit {
   public save() {
     if (this.salle.id) {
       this.salleService.update(this.salle).subscribe((result) => {
-        this.changeMode();
+        this.goList({ info: 'update' });
       });
     } else {
       this.salleService.insert(this.salle).subscribe((result) => {
-        this.salle.id = result.id;
-        this.changeMode();
-        this.insertEvent.emit();
+        this.goList({ info: 'insert' });
       });
     }
+  }
+
+  private goList(info: Object) {
+    this.router.navigate(['/salles'], { queryParams: info });
   }
 }
 
