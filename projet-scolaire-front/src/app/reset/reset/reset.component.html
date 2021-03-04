@@ -1,19 +1,5 @@
-<div class="row">
-  <div class="col-md-6 offset-md-3 mt-4">
-    <h3>Reset Password</h3>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-      <div class="form-group">
-        <label for="resetPasswordEmail">Account Email</label>
-        <input
-          type="email"
-          name="email"
-          ngModel
-          required
-          #email="ngModel"
-          class="form-control"
-          id="resetPasswordEmail"
-          placeholder="Enter email"
-        />
+<div id="bg">
+    <div class="row" id="log">
 
         <input
           type="string"
@@ -27,9 +13,25 @@
         />
       </div>
 
-      <button type="submit" [disabled]="f.invalid" class="btn btn-primary">
+        <div class="col-md-6 mx-auto">
+            <div class="card rounded-0" id="card-log">
+
+                <div class="card-body">
+                    <h1>Reset Password</h1>
+                    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                        <div class="form-group">
+                            <label class="labelle" for="resetPasswordEmail">Entrez votre compte email</label>
+                            <input type="email" name="email" ngModel required #email="ngModel" class="form-control" id="resetPasswordEmail" placeholder="Enter email" />
+
+                            <input type="number" name="number-phone" ngModel required #email="ngModel" class="form-control" id="resetPasswordEmail" placeholder="Enter phone number-phone" />
+                        </div>
+
+                        <button id="btn" type="submit" [disabled]="f.invalid" class="btn btn-primary">
         Reset Password <i class="fas fa-paper-plane"></i>
       </button>
-    </form>
-  </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
