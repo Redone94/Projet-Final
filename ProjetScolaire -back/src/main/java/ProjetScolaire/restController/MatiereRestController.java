@@ -28,8 +28,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import ProjetScolaire.entity.Matiere;
 import ProjetScolaire.entity.Vue;
 import ProjetScolaire.exception.MatiereInvalidException;
-
-
+import ProjetScolaire.exception.MatiereNotFoundException;
 import ProjetScolaire.service.MatiereService;
 
 
