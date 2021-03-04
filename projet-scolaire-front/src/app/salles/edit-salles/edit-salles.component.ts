@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { data, param } from 'jquery';
 import { Salle } from 'src/app/model/salle';
 import { SalleService } from 'src/app/service/salle.service';
 
@@ -26,6 +27,14 @@ export class EditSallesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(param=>{
+     if( param.id){
+      this.salleService.findById(param.id).subscribe(data=>{
+        this.salle=data;
+        console.log(this.salle);
+      })
+     }
+    } )
     if (!this.salle.id) {
       this.changeMode();
     }

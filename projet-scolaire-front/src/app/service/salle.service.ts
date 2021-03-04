@@ -46,6 +46,6 @@ export class SalleService {
   }
 
   public findById(id:number): Observable<Salle>{
-    return this.http.get<Salle>(this.url + '/'+id);
+    return this.http.get<Salle>(this.url + '/'+id, { headers: this.HttpHeaders });
     }
 }

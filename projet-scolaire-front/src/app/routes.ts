@@ -52,6 +52,12 @@ export const routes: Routes = [
 
   { path: 'salles', component: ListSallesComponent, },
   {
+    path: 'salles/edit/:id',
+    component: EditSallesComponent,
+   canActivate: [AdminGuardService],
+  },
+
+  {
     path: 'salles/edit',
     component: EditSallesComponent,
    canActivate: [AdminGuardService],
