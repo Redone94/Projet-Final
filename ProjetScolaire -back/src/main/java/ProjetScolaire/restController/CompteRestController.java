@@ -109,6 +109,7 @@ public class CompteRestController {
 		Compte c=compte.getCompte();
 		
 		c.setPassword(passwordEncorder.encode(password));
+		c.setStatut(false);
 		compteService.save(c);
 		return c;
 	}

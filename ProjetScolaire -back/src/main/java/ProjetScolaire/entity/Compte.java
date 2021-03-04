@@ -55,6 +55,9 @@ public class Compte {
 	@JsonView(Vue.Versionexist .class)
 	@Version
 	protected int version;
+	
+	@JsonView(Vue.Common.class)
+	protected boolean statut=true;
 
 	public Compte() {
 		
@@ -145,6 +148,14 @@ public class Compte {
 	}
 
 	
+	public boolean isStatut() {
+		return statut;
+	}
+
+	public void setStatut(boolean statut) {
+		this.statut = statut;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -155,6 +166,7 @@ public class Compte {
 		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
+		result = prime * result + (statut ? 1231 : 1237);
 		result = prime * result + tel;
 		result = prime * result + version;
 		return result;
@@ -196,13 +208,14 @@ public class Compte {
 			return false;
 		if (role != other.role)
 			return false;
+		if (statut != other.statut)
+			return false;
 		if (tel != other.tel)
 			return false;
 		if (version != other.version)
 			return false;
 		return true;
 	}
-
 
 	
 	

@@ -34,8 +34,8 @@ export class LoginService {
     );
   }
 
-  public checkLogin(login: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.url}/${login}`);
+  public checkLogin(login: string): Observable<Login> {
+    return this.http.get<Login>(`${this.url}/${login}`);
   }
 
   changePassword(model: any, password: string) {

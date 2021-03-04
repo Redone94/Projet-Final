@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { LoginService } from 'src/app/service/login.service';
 export class ResetComponent implements OnInit {
   model: any = {};
 
-  constructor(private authService: LoginService) {}
+  constructor(private authService: LoginService, private router: Router) {}
 
   ngOnInit(): void {}
   onSubmit(f: NgForm) {
@@ -18,6 +19,8 @@ export class ResetComponent implements OnInit {
       email: f.value.email,
       numero: f.value.numberphone,
     };
-    this.authService.resetPassword(this.model, o);
+    this.authService.resetPassword(this.model, o).subscribe(() => {
+      this.router.navigate(['/login']);
+    });
   }
 }

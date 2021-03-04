@@ -53,8 +53,13 @@ export class LoginComponent implements OnInit {
           btoa(`${this.loginCtrl.value}:${this.pwdCtrl.value}`)
         );
         sessionStorage.setItem('login', this.loginCtrl.value);
-
-        this.router.navigate(['/changepassword']);
+        this.login = result;
+        console.log(result);
+        if (this.login.statut === true) {
+          this.router.navigate(['/changepassword']);
+        } else if (this.login.role === 'ROLE_ADMIN') {
+          this.router.navigate(['/admin']);
+        } else this.router.navigate(['/home']);
       },
 
       (error) => {
