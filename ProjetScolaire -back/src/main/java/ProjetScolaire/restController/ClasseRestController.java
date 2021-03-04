@@ -3,9 +3,7 @@ package ProjetScolaire.restController;
 
 import java.net.URI;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,78 +22,79 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import ProjetScolaire.entity.Matiere;
+import ProjetScolaire.entity.Classe;
 import ProjetScolaire.entity.Vue;
-import ProjetScolaire.exception.MatiereInvalidException;
-import ProjetScolaire.exception.MatiereNotFoundException;
-import ProjetScolaire.service.MatiereService;
+import ProjetScolaire.exception.ClasseInvalidException;
+import ProjetScolaire.exception.ClasseNotFoundException;
+
+import ProjetScolaire.service.ClasseService;
 
 
 @RestController
-@RequestMapping("/api/matieres")
+@RequestMapping("/api/classes")
 @CrossOrigin(origins="*")
-public class MatiereRestController {
+public class ClasseRestController {
 
 
 	@Autowired
-	private MatiereService matiereService;
+	private ClasseService classeService;
 
 
 	@GetMapping({ "", "/" })
 	@JsonView(Vue.Common.class)
-	public List<Matiere> getMatieres() {
-		return matiereService.allMatiere();
+	public List<Classe> getClasses() {
+		return classeService.allclasse();
 	}
 	@PostMapping({ "", "/" })
-	public ResponseEntity<Matiere> addMatiere(@Valid @RequestBody Matiere m, BindingResult br,
+	public ResponseEntity<Classe> addClasse(@Valid @RequestBody Classe c, BindingResult br,
 			UriComponentsBuilder uCB) {
 		if (br.hasErrors()) {
-			throw new MatiereInvalidException();
+			throw new ClasseInvalidException();
 		}
 		
-		matiereService.creationMatiere(m);
-		URI uri = uCB.path("/api/matieres/{id}").buildAndExpand(m.getId()).toUri();
+		classeService.creation(c);
+		URI uri = uCB.path("/api/classes/{id}").buildAndExpand(c.getId()).toUri();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(uri);
-		return new ResponseEntity<Matiere>(m, headers, HttpStatus.CREATED);
+		return new ResponseEntity<Classe>(c, headers, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{id}")
 	@JsonView(Vue.Common.class)
-	public Matiere findById(@PathVariable("id") Integer id) {
-		Matiere m = matiereService.find(id);
+	public Classe findById(@PathVariable("id") Integer id) {
+		Classe m = classeService.findById(id);
 		if (m.getId() != null) {
 			return m;
 		}
-		throw new MatiereNotFoundException();
+		throw new ClasseNotFoundException();
 	}
 
 	@PutMapping("/{id}")
 	@JsonView(Vue.Common.class)
-	public Matiere update(@Valid @RequestBody Matiere m, BindingResult br, @PathVariable("id") Integer id) {
+	public Classe update(@Valid @RequestBody Classe c, BindingResult br, @PathVariable("id") Integer id) {
 		
 		
 		if (br.hasErrors()) {
-			throw new MatiereInvalidException();
+			throw new ClasseInvalidException();
 		}
-		Matiere matiereEnBase = matiereService.find(id);
-		if (matiereEnBase.getId() == null) {
-			throw new MatiereNotFoundException();
+		Classe classeEnBase = classeService.findById(id);
+		if (classeEnBase.getId() == null) {
+			throw new ClasseNotFoundException();
 		}
-		matiereEnBase.setNomMatiere(m.getNomMatiere());
-		matiereEnBase.setCouleur(m.getCouleur());
+		classeEnBase.setNom(c.getNom());
+		classeEnBase.setProfPrincipal(c.getProfPrincipal());
 
-		matiereService.save(matiereEnBase);
-		return matiereEnBase;
+		classeService.save(classeEnBase);
+		return classeEnBase;
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
-		Matiere MatiereEnBase = matiereService.find(id);
-		if (MatiereEnBase.getId() == null) {
-			throw new MatiereNotFoundException();
+		Classe ClasseEnBase = classeService.findById(id);
+		if (ClasseEnBase.getId() == null) {
+			throw new ClasseNotFoundException();
 		}
-		matiereService.delete(id);
+		classeService.delete(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	

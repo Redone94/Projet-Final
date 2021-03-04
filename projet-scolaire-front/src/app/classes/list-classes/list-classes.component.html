@@ -1,1 +1,37 @@
-<p>list-classes works!</p>
+<!-- <div class="page-wrapper">
+  <app-sidebar></app-sidebar>
+  <button *ngIf="user()" class="btn btn-danger" (click)="logout()">deconnexion</button>
+
+
+</div>
+<router-outlet></router-outlet> -->
+<h3>Liste des classes</h3>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th> Id </th>
+          <th> Nom </th>
+          <th> Professeur Principal </th>
+        </tr>
+      </thead>
+      <tbody>
+
+    <tr *ngFor = "let c of classes">
+      <td> {{c.id}} </td>
+      <td> {{c.nom}}</td>
+      <td> {{c.profPrincipal}}</td>
+
+
+      <td><button type="button" class="btn btn-outline-danger"(click)="delete(c.id)">supprimer</button></td>
+    </tr>
+  </tbody>
+
+
+  </table>
+  <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/matieres', 'edit']" routerLinkActive="active">ajouter</button></td>
+  <button type="button" class="btn btn-outline-warning"[routerLink]="['/matieres', 'edit']" routerLinkActive="active"> modifier </button>
+
+</div>
+

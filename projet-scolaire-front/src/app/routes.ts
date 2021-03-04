@@ -1,3 +1,4 @@
+import { EditMatieresComponent } from './matieres/edit-matieres/edit-matieres.component';
 import { Routes } from '@angular/router';
 
 import {
@@ -51,9 +52,16 @@ export const routes: Routes = [
   {
     path: 'matieres',
     component: ListMatieresComponent,
-    canActivate: [AdminGuardService],
+   canActivate: [AdminGuardService],
   },
+  {
+    path: 'matieres/edit',
+    component: EditMatieresComponent,
+   canActivate: [AdminGuardService],
+  },
+
   { path: 'salles', component: ListSallesComponent },
+
   { path: 'classes', component: ListClassesComponent },
   {
     path: 'professeurs',

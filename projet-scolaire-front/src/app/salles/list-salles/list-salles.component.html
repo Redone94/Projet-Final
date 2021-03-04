@@ -1,1 +1,37 @@
-<p>list-salles works!</p>
+<!-- <div class="page-wrapper">
+  <app-sidebar></app-sidebar>
+  <button *ngIf="user()" class="btn btn-danger" (click)="logout()">deconnexion</button>
+
+
+</div>
+<router-outlet></router-outlet> -->
+<h3>Liste des salles</h3>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th> Id </th>
+          <th> Nom de la salle </th>
+          <th> Capacite </th>
+        </tr>
+      </thead>
+      <tbody>
+
+    <tr *ngFor = "let s of salles">
+      <td> {{s.id}} </td>
+      <td> {{s.nom}}</td>
+      <td> {{s.capacite}}</td>
+
+
+      <td><button type="button" class="btn btn-outline-danger"(click)="delete(s.id)">supprimer</button></td>
+    </tr>
+  </tbody>
+
+
+  </table>
+  <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/salles', 'edit']" routerLinkActive="active">ajouter</button></td>
+  <button type="button" class="btn btn-outline-warning"[routerLink]="['/salles', 'edit']" routerLinkActive="active"> modifier </button>
+
+</div>
+

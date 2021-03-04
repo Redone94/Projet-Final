@@ -30,6 +30,7 @@ public class SalleClasse {
 	@JsonView(Vue.Common.class)
 	private String nom;
 	
+	@JsonView(Vue.Common.class)
 	private int capacite;
 	
 	@ManyToOne

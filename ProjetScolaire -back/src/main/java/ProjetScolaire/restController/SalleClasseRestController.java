@@ -30,7 +30,7 @@ import ProjetScolaire.exception.SalleClasseNotFoundException;
 import ProjetScolaire.service.SalleClasseService;
 
 @RestController
-@RequestMapping("/api/SalleClasse")
+@RequestMapping("/api/salles")
 @CrossOrigin(origins="*")
 public class SalleClasseRestController {
 
@@ -51,7 +51,7 @@ public class SalleClasseRestController {
 			
 		
 		salleClasseService.creation(s);
-		URI uri = uCB.path("/api/SalleClasse/{id}").buildAndExpand(s.getId()).toUri();
+		URI uri = uCB.path("/api/salles/{id}").buildAndExpand(s.getId()).toUri();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(uri);
 		return new ResponseEntity<SalleClasse>(s, headers, HttpStatus.CREATED);

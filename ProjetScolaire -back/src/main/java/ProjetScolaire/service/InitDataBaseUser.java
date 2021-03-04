@@ -14,6 +14,7 @@ import ProjetScolaire.entity.Etablissement;
 import ProjetScolaire.entity.Matiere;
 import ProjetScolaire.entity.Professeur;
 import ProjetScolaire.entity.Role;
+import ProjetScolaire.entity.SalleClasse;
 import ProjetScolaire.entity.Type_Etablissement;
 
 import ProjetScolaire.repository.ClasseRepository;
@@ -21,6 +22,7 @@ import ProjetScolaire.repository.CompteRepository;
 import ProjetScolaire.repository.EtablissementRepository;
 import ProjetScolaire.repository.MatiereRepository;
 import ProjetScolaire.repository.ProfesseurRepository;
+import ProjetScolaire.repository.SalleClasseRepository;
 
 @Service	
 public class InitDataBaseUser implements CommandLineRunner{
@@ -42,6 +44,9 @@ public class InitDataBaseUser implements CommandLineRunner{
 	
 	@Autowired
 	private CompteRepository compteRepository;
+	
+	@Autowired
+	private SalleClasseRepository salleRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -79,7 +84,7 @@ public class InitDataBaseUser implements CommandLineRunner{
 		e1.setTypeEtablissement(Type_Etablissement.TYPE_LYCEE);
 		etabRepo.save(e1);
 
-		System.out.println("test");
+	
 		
 		Matiere m = new Matiere();
 		m.setNomMatiere("mathematiques");
@@ -94,10 +99,22 @@ public class InitDataBaseUser implements CommandLineRunner{
 		
 
 		Classe c=new Classe();
+		Classe c1=new Classe();
+		Classe c2=new Classe();
 		c.setCours(null);
 		c.setNom("5eme D");
 		c.setProfPrincipal("Mme Dupont");
 		classeRepo.save(c);
+		
+		c1.setCours(null);
+		c1.setNom("3eme B");
+		c1.setProfPrincipal("M Dumbo");
+		classeRepo.save(c1);
+		
+		c2.setCours(null);
+		c2.setNom("6eme B");
+		c2.setProfPrincipal("Mlle Rose");
+		classeRepo.save(c2);
 		
 		Compte C1=new Compte();
 		Compte C2=new Compte();
@@ -136,6 +153,29 @@ public class InitDataBaseUser implements CommandLineRunner{
 		p1.setCompte(C3);
 		p1.setAdresse(a2);
 		profRepo.save(p1);
+		
+		SalleClasse s1 =new SalleClasse();
+		SalleClasse s2 =new SalleClasse();
+		SalleClasse s3 =new SalleClasse();
+		
+		s1.setNom("Neptune");
+		s1.setCapacite(35);
+		s1.setEtablissement(e1);
+		s1.setCours(null);
+		salleRepo.save(s1);
+		
+		s2.setNom("Jupiter");
+		s2.setCapacite(20);
+		s2.setEtablissement(e1);
+		s2.setCours(null);
+		salleRepo.save(s2);
+		
+		s3.setNom("Uranus");
+		s3.setCapacite(40);
+		s3.setEtablissement(e);
+		s3.setCours(null);
+		salleRepo.save(s3);
+		
 		
 		
 		

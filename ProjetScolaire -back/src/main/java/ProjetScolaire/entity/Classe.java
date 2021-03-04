@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
-import javax.validation.constraints.NotEmpty;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 
@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Classe {
 	
+	@JsonView(Vue.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -64,6 +65,23 @@ public class Classe {
 		this.cours = cours;
 	}
 	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

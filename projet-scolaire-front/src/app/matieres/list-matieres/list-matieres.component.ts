@@ -36,15 +36,6 @@ export class ListMatieresComponent implements OnInit {
 
  public findById(){}
 
-
-
-
-  /* public delete(id: number) {
-     this.matiereService.delete(id).subscribe((result) => {
-       this.init();
-     });
-   }*/
-
     }
 
 
