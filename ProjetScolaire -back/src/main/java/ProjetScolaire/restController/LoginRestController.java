@@ -43,7 +43,7 @@ public class LoginRestController {
 	
 	@PostMapping("/reset")
 	@JsonView(Vue.Common.class)
-	public ResponseEntity<Compte> resetCompte(@RequestBody Reset o) {
+	public Compte resetCompte(@RequestBody Reset o) {
 		String email=o.getEmail();
 		String numero=o.getNumero();
 		System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
@@ -51,9 +51,9 @@ public class LoginRestController {
 	Compte c =userRepo.findByMail(email);
 	String tel=c.getTel();
 	if(tel==numero) {
-		return new ResponseEntity<Compte>(c, HttpStatus.OK);
+		return c;
 	}
-	return new ResponseEntity<Compte>(c, HttpStatus.NOT_FOUND);
+	return  new Compte();
 		
 	}
 }
