@@ -1,21 +1,45 @@
-import { EditMatieresComponent } from './matieres/edit-matieres/edit-matieres.component';
 import { Routes } from '@angular/router';
-import { ChangePasswordComponent } from './change-password/change-password.component';
 
-import { ListClassesComponent } from './classes/list-classes/list-classes.component';
-import { ListEtablissementsComponent } from './etablissements/list-etablissements/list-etablissements.component';
+import {
+  ChangePasswordComponent
+} from './change-password/change-password.component';
+import {
+  ListClassesComponent
+} from './classes/list-classes/list-classes.component';
+import {
+  EditEtablissementComponent
+} from './etablissements/edit-etablissement/edit-etablissement.component';
+import {
+  ListEtablissementsComponent
+} from './etablissements/list-etablissements/list-etablissements.component';
 import { AccueilAdminComponent } from './home/accueil-admin.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login/login.component';
-import { ListMatieresComponent } from './matieres/list-matieres/list-matieres.component';
-import { ListProfesseursComponent } from './professeurs/list-professeurs/list-professeurs.component';
+import {
+  EditMatieresComponent
+} from './matieres/edit-matieres/edit-matieres.component';
+import {
+  ListMatieresComponent
+} from './matieres/list-matieres/list-matieres.component';
+import {
+  EditProfesseursComponent
+} from './professeurs/edit-professeurs/edit-professeurs.component';
+import {
+  ListProfesseursComponent
+} from './professeurs/list-professeurs/list-professeurs.component';
+import { ResetPageComponent } from './reset-page/reset-page.component';
 import { ResetComponent } from './reset/reset/reset.component';
-import { ListSallesComponent } from './salles/list-salles/list-salles.component';
+import {
+  EditSallesComponent
+} from './salles/edit-salles/edit-salles.component';
+import {
+  ListSallesComponent
+} from './salles/list-salles/list-salles.component';
 import { AdminGuardService } from './service/admin-guard.service';
 import { UserGuardService } from './service/user-guard.service';
-import { UtilisateursComponent } from './utilisateurs/utilisateurs/utilisateurs.component';
-import { EditSallesComponent } from './salles/edit-salles/edit-salles.component';
-import { ResetPageComponent } from './reset-page/reset-page.component';
+import {
+  UtilisateursComponent
+} from './utilisateurs/utilisateurs/utilisateurs.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,7 +62,7 @@ export const routes: Routes = [
   {
     path: 'etablissements',
     component: ListEtablissementsComponent,
-    canActivate: [AdminGuardService,UserGuardService],
+    canActivate: [AdminGuardService, UserGuardService],
   },
   {
     path: 'etablissements/edit:id',
@@ -82,7 +106,7 @@ export const routes: Routes = [
   {
     path: 'professeurs',
     component: ListProfesseursComponent,
-    canActivate: [UserGuardService,AdminGuardService],
+    canActivate: [UserGuardService, AdminGuardService],
   },
   {
     path: 'professeurs/edit:id_professeur',
@@ -91,10 +115,10 @@ export const routes: Routes = [
   },
   {
     path: 'professeurs/edit',
-    component:EditProfesseursComponent,
+    component: EditProfesseursComponent,
     canActivate: [AdminGuardService],
   },
-  
+
   { path: 'changepassword', component: ChangePasswordComponent },
   { path: 'resetpassword', component: ResetPageComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -85,7 +85,12 @@
         width: 100%;
     }
 
-    i {
+    .sidebar-wrapper {
+        background: url(/assets/bg1.jpg) center;
+        background-size: cover;
+    }
+
+    .fa-power-off {
         margin-right: 10px;
         font-size: 26px;
         width: 30px;
@@ -95,7 +100,82 @@
         border-radius: 4px;
     }
 
-    .sidebar-wrapper {
-        background: url(/assets/bg1.jpg) center;
-        background-size: cover;
+    .fa-tachometer {
+        margin-right: 20px;
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+    .fa-calendar {
+        margin-right: 20px;
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+    .fa-book {
+        margin-right: 20px;
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+    .fa-user {
+        margin-right: 20px;
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+    .fa-users {
+        margin-right: 20px;
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+    .fa-university {
+        margin-right: 20px;
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+    .fa-graduation-cap {
+        margin-right: 20px;
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+    .fa-user-circle {
+        margin-right: 20px;
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 4px;
     }

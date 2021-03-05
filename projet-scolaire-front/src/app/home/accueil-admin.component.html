@@ -1,4 +1,16 @@
+<app-sidebar></app-sidebar>
 <div id="home">
-    <app-sidebar></app-sidebar>
-    <h1>accueil</h1>
+
+    <div class="row">
+
+
+        <div class="card card-1"><a [routerLink]="['/utilisateurs']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-user"></i>Utilisateurs</a></div>
+        <div class="card card-2"> <a [routerLink]="['/etablissements']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-university"></i>Etablissements</a></div>
+        <div class="card card-3"><a [routerLink]="['/matieres']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-book"></i>Matières</a></div>
+        <div class="card card-4"> <a [routerLink]="['/salles']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-graduation-cap"></i>Salles</a></div>
+        <div class="card card-5"> <a [routerLink]="['/classes']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-users"></i>Classes</a></div>
+        <div class="card card-6"> <a [routerLink]="['/classes']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-users"></i>Classes</a></div>
+        <div class="card card-6"> <a [routerLink]="['/professeurs']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-user-circle"></i>Professeurs</a></div>
+        <div class="card card-8"> <a [routerLink]="['/planning']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-calendar"></i>Planning</a></div>
+    </div>
 </div>

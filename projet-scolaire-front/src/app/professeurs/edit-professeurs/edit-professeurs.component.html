@@ -1,5 +1,5 @@
 <p>edit-professeurs </p>
-  <ng-container *ngIf="!edit; else formEdit">
+<!--<ng-container *ngIf="!edit; else formEdit">
     <td>{{ professeur.id }}</td>
     <td>{{ professeur.nom }}</td>
     <td>{{ professeur.prenom }}</td>
@@ -8,51 +8,51 @@
     <td>{{ professeur.etablissement.nom }}</td>
     <td>{{ professeur.matiere.nom }}</td>
     <td>
-      <button (click)="changeMode()" class="btn btn-outline-primary">
+        <button (click)="changeMode()" class="btn btn-outline-primary">
         editer
       </button>
     </td>
     <td>
-      <button class="btn btn-outline-danger" (click)="delete()">supprimer</button>
+        <button class="btn btn-outline-danger" (click)="delete()">supprimer</button>
     </td>
-  </ng-container>
-  
-  <ng-template #formEdit><br>
-  
+</ng-container>
+
+<ng-template #formEdit><br>
+
     <td>id:<input [ngModel]="professeur.id" readonly /></td><br>
     <td>Nom Professeur : <input [(ngModel)]="professeur.nom" /></td><br>
     <td>Prenom Professeur : <input [(ngModel)]="professeur.prenom" /></td><br>
     <td>Date de naissance : <input [(ngModel)]="professeur.datenaissance" /></td><br>
-<!-- Adresse -->
-    <td>numero:<input [(ngModel)]="professeur.adresse.numero" /></td>
-    <td>voie:<input [(ngModel)]="professeur.adresse.voie" /></td><br>
-    <td>Code Postale:<input [(ngModel)]="professeur.adresse.cp" /></td>
-    <td>ville<input [(ngModel)]="professeur.adresse.ville" /></td><br>
+    <!-- Adresse -->
+<td>numero:<input [(ngModel)]="professeur.adresse.numero" /></td>
+<td>voie:<input [(ngModel)]="professeur.adresse.voie" /></td><br>
+<td>Code Postale:<input [(ngModel)]="professeur.adresse.cp" /></td>
+<td>ville<input [(ngModel)]="professeur.adresse.ville" /></td><br>
 <!-- etablissement -->
-    <td>Etablissement:
-      <select>
+<td>Etablissement:
+    <select>
         <option *ngFor="let e of etablissement">
-          <input [(ngModel)]="professeur.etablissement.id.nom" />
+          <!--<input [(ngModel)]="professeur.etablissement.id.nom" />
         </option>
       </select>
-  </td><br>
-      <td>matiere:
-        <select>
+</td><br>
+<td>matiere:
+    <select>
           <option *ngFor="let m of matiere">
-            <input [(ngModel)]="professeur.matiere.id.nom" />
+            <!--<input [(ngModel)]="professeur.matiere.id.nom" />
           </option>
         </select>
-      </td><br>
-<!-- login -->
-    <td> login:<input [(ngModel)]="professeur.compte.login" /></td><br>
-      <td>password:<input [(ngModel)]="professeur.compte.password" /></td><br>
+</td><br>
+<!-- login
+<td> login:<input [(ngModel)]="professeur.compte.login" /></td><br>
+<td>password:<input [(ngModel)]="professeur.compte.password" /></td><br>
 
 
-      <button (click)="save()" class="btn btn-outline-success">
+<button (click)="save()" class="btn btn-outline-success">
         enregistrer
       </button>
-  
-    <td>
-      <button (click)="cancel()" class="btn btn-outline-warning">annuler</button>
-    </td>
-  </ng-template>
+
+<td>
+    <button (click)="cancel()" class="btn btn-outline-warning">annuler</button>
+</td>
+</ng-template>-->
