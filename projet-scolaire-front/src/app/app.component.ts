@@ -8,19 +8,18 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'projet-scolaire-front';
-  _user :string='';
+  _user: string = '';
   constructor(private router: Router) {}
 
-  public logout(){
-sessionStorage.removeItem('tokenId');
-sessionStorage.removeItem('login');
-this._user='';
-this.router.navigate(['/login']);
+  logout() {
+    sessionStorage.removeItem('tokenId');
+    sessionStorage.removeItem('login');
+    this._user = '';
+    this.router.navigate(['/login']);
   }
-  public user(){
-    if(sessionStorage.getItem('tokenId')){
-    return true;
-    
+  user() {
+    if (sessionStorage.getItem('tokenId')) {
+      return true;
     }
     return false;
   }

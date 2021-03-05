@@ -4,6 +4,9 @@ import {
   ChangePasswordComponent
 } from './change-password/change-password.component';
 import {
+  EditClassesComponent
+} from './classes/edit-classes/edit-classes.component';
+import {
   ListClassesComponent
 } from './classes/list-classes/list-classes.component';
 import {
@@ -35,6 +38,7 @@ import {
 import {
   ListSallesComponent
 } from './salles/list-salles/list-salles.component';
+import { SchedulerComponent } from './scheduler/scheduler.component';
 import { AdminGuardService } from './service/admin-guard.service';
 import { UserGuardService } from './service/user-guard.service';
 import {
