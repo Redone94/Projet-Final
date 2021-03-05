@@ -12,7 +12,7 @@
       <thead>
         <tr>
           <th> Id </th>
-          <th> Matiere </th>
+          <th> Nom de la matiere </th>
           <th> Couleur </th>
         </tr>
       </thead>
@@ -24,14 +24,19 @@
       <td> {{m.couleur}}</td>
 
 
-      <td><button type="button" class="btn btn-outline-danger"(click)="delete(m.id)">supprimer</button></td>
+      <td><button type="button" class="btn btn-outline-danger"
+        (click)="delete(m.id)">supprimer</button></td>
+
+      <td> <button type="button" class="btn btn-outline-warning"
+        [routerLink]="['/matieres', 'edit', m.id]"
+        routerLinkActive="active"> modifier </button></td>
     </tr>
   </tbody>
 
 
   </table>
   <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/matieres', 'edit']" routerLinkActive="active">ajouter</button></td>
-  <button type="button" class="btn btn-outline-warning"[routerLink]="['/matieres', 'edit']" routerLinkActive="active"> modifier </button>
+
 
 </div>
 

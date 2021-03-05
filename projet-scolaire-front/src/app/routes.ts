@@ -77,6 +77,11 @@ export const routes: Routes = [
   {
     path: 'matieres',
     component: ListMatieresComponent,
+    canActivate: [AdminGuardService, UserGuardService],
+  },
+  {
+    path: 'matieres/edit/:id',
+    component: EditMatieresComponent,
     canActivate: [AdminGuardService],
   },
   {
@@ -95,14 +100,26 @@ export const routes: Routes = [
     component: EditSallesComponent,
     canActivate: [AdminGuardService],
   },
-
   {
     path: 'salles/edit',
     component: EditSallesComponent,
     canActivate: [AdminGuardService],
   },
-
-  { path: 'classes', component: ListClassesComponent },
+  {
+    path: 'classes',
+    component: ListClassesComponent,
+    canActivate: [AdminGuardService, UserGuardService],
+  },
+  {
+    path: 'classes/edit/:id',
+    component: EditClassesComponent,
+    canActivate: [AdminGuardService],
+  },
+  {
+    path: 'classes/edit',
+    component: EditClassesComponent,
+    canActivate: [AdminGuardService],
+  },
   {
     path: 'professeurs',
     component: ListProfesseursComponent,

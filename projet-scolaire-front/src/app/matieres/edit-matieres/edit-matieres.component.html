@@ -1,1 +1,29 @@
-<p>edit-matieres works!</p>
+<ng-container *ngIf="!edit; else formEdit">
+  <td>{{ matiere.id }}</td>
+  <td>{{ matiere.nom }}</td>
+  <td>{{ matiere.couleur }}</td>
+  <td>
+    <button (click)="changeMode()" class="btn btn-outline-primary">
+      editer
+    </button>
+  </td>
+  <td>
+    <button class="btn btn-outline-danger" (click)="delete()">supprimer</button>
+  </td>
+</ng-container>
+
+<ng-template #formEdit><br>
+
+  <td>{{ matiere.id }}</td>
+  <td>Nom de la matiere : <input [(ngModel)]="matiere.nom" /></td><br>
+  <td>Couleur de la matiere : <input [(ngModel)]="matiere.couleur" /></td>
+  <td>
+    <button (click)="save()" class="btn btn-outline-success">
+      enregistrer
+    </button>
+  </td>
+  <td>
+    <button (click)="cancel()" class="btn btn-outline-warning">annuler</button>
+  </td>
+</ng-template>
+

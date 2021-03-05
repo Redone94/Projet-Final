@@ -12,8 +12,8 @@
       <thead>
         <tr>
           <th> Id </th>
-          <th> Nom </th>
-          <th> Professeur Principal </th>
+          <th> Nom de la classe </th>
+          <th> Nom du professeur principal  </th>
         </tr>
       </thead>
       <tbody>
@@ -24,14 +24,21 @@
       <td> {{c.profPrincipal}}</td>
 
 
-      <td><button type="button" class="btn btn-outline-danger"(click)="delete(c.id)">supprimer</button></td>
+      <td><button type="button" class="btn btn-outline-danger"
+        (click)="delete(c.id)">supprimer</button></td>
+
+      <td> <button type="button" class="btn btn-outline-warning"
+        [routerLink]="['/classes', 'edit', c.id]"
+        routerLinkActive="active"> modifier </button></td>
     </tr>
   </tbody>
 
 
   </table>
-  <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/matieres', 'edit']" routerLinkActive="active">ajouter</button></td>
-  <button type="button" class="btn btn-outline-warning"[routerLink]="['/matieres', 'edit']" routerLinkActive="active"> modifier </button>
+  <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/classes', 'edit']" routerLinkActive="active">ajouter</button></td>
+
 
 </div>
+
+
 

@@ -6,7 +6,7 @@ import { Matiere } from '../model/matiere';
 @Injectable({
   providedIn: 'root'
 })
-export class MatiereService {
+export class matiereService {
 
   private url: string = 'http://localhost:8080/projetscolaire/api/matieres';
   private HttpHeaders: HttpHeaders;
@@ -22,14 +22,6 @@ export class MatiereService {
     return this.http.get<Matiere[]>(this.url, { headers: this.HttpHeaders });
   }
 
-  /*public delete(id: number): Observable<void> {
-    console.log("idvalue:"+id);
-    let endPoints = "/posts/1";
-    return this.http.delete<void>(this.url + '/'+endPoints),
-    {
-      headers: this.httpHeaders,
-    });*/
-
 
     public delete(id:number): Observable<void> {
       return this.http.delete<void>(this.url + '/' + id, {
@@ -38,8 +30,8 @@ export class MatiereService {
 
   }
 
-  public update(matiere: Matiere): Observable<Matiere> {
-    return this.http.put<Matiere>(`${this.url}/${matiere.id}`, matiere, {
+  public update(salle: Matiere): Observable<Matiere> {
+    return this.http.put<Matiere>(`${this.url}/${salle.id}`, salle, {
       headers: this.HttpHeaders,
     });
   }
@@ -54,6 +46,6 @@ export class MatiereService {
   }
 
   public findById(id:number): Observable<Matiere>{
-    return this.http.get<Matiere>(this.url + '/'+id);
+    return this.http.get<Matiere>(this.url + '/'+id, { headers: this.HttpHeaders });
     }
 }

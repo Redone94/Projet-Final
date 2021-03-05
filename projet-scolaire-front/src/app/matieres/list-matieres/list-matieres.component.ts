@@ -1,7 +1,8 @@
-import { MatiereService } from './../../service/matiere.service';
+import { matiereService } from 'src/app/service/matiere.service';
 import { Component, OnInit } from '@angular/core';
 import { Matiere } from 'src/app/model/matiere';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -11,10 +12,11 @@ import { Router } from '@angular/router';
 })
 export class ListMatieresComponent implements OnInit {
 
+
   matieres: Matiere[] = [];
 
 
-  constructor(private matiereService : MatiereService, private router: Router) { }
+  constructor(private matiereService : matiereService, private router: Router) { }
 
   ngOnInit(): void {
     this.init();
@@ -37,6 +39,4 @@ export class ListMatieresComponent implements OnInit {
  public findById(){}
 
     }
-
-
 

@@ -1,6 +1,10 @@
+
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Matiere } from 'src/app/model/matiere';
-import { MatiereService } from 'src/app/service/matiere.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { matiereService } from 'src/app/service/matiere.service';
+
+
 
 @Component({
   selector: 'app-edit-matieres',
@@ -19,9 +23,20 @@ export class EditMatieresComponent implements OnInit {
   @Output('cancel')
   cancelEvent: EventEmitter<void> = new EventEmitter();
 
-  constructor(private matiereService: MatiereService) {}
+  constructor(private matiereService: matiereService,
+    private activatedRoute: ActivatedRoute,
+  private router: Router,
+  ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(param=>{
+     if( param.id){
+      this.matiereService.findById(param.id).subscribe(data=>{
+        this.matiere=data;
+        console.log(this.matiere);
+      })
+     }
+    } )
     if (!this.matiere.id) {
       this.changeMode();
     }
@@ -40,20 +55,23 @@ export class EditMatieresComponent implements OnInit {
     if (!this.matiere.id) {
       console.log('here');
       this.cancelEvent.emit();
-    }
+    }this.router.navigate(['/matieres']);
   }
 
   public save() {
     if (this.matiere.id) {
       this.matiereService.update(this.matiere).subscribe((result) => {
-        this.changeMode();
+        this.goList({ info: 'update' });
       });
     } else {
       this.matiereService.insert(this.matiere).subscribe((result) => {
-        this.matiere.id = result.id;
-        this.changeMode();
-        this.insertEvent.emit();
+        this.goList({ info: 'insert' });
       });
     }
   }
+
+  private goList(info: Object) {
+    this.router.navigate(['/matieres'], { queryParams: info });
+  }
 }
+

@@ -10,6 +10,7 @@ import { ClasseService } from 'src/app/service/classe.service';
 })
 export class ListClassesComponent implements OnInit {
 
+
   classes: Classe[] = [];
 
 
@@ -35,6 +36,5 @@ export class ListClassesComponent implements OnInit {
 
  public findById(){}
 
+    }
 
-
-}
