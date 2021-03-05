@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -23,6 +26,7 @@ export class LoginComponent implements OnInit {
   login: Login;
   erreur: boolean = false;
   passwordGoup: FormGroup;
+  _user: string = '';
 
   constructor(
     private LoginService: LoginService,
@@ -42,6 +46,19 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  public logout() {
+    sessionStorage.removeItem('tokenId');
+    sessionStorage.removeItem('login');
+    this._user = '';
+    this.router.navigate(['/login']);
+  }
+  public user() {
+    if (sessionStorage.getItem('tokenId')) {
+      return true;
+    }
+    return false;
+  }
 
   public send() {
     this.LoginService.auth(
