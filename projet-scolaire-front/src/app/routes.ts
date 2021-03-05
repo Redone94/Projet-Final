@@ -15,6 +15,7 @@ import { AdminGuardService } from './service/admin-guard.service';
 import { UserGuardService } from './service/user-guard.service';
 import { UtilisateursComponent } from './utilisateurs/utilisateurs/utilisateurs.component';
 import { EditSallesComponent } from './salles/edit-salles/edit-salles.component';
+import { ResetPageComponent } from './reset-page/reset-page.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -42,30 +43,30 @@ export const routes: Routes = [
   {
     path: 'matieres',
     component: ListMatieresComponent,
-   canActivate: [AdminGuardService],
+    canActivate: [AdminGuardService],
   },
   {
     path: 'matieres/edit',
     component: EditMatieresComponent,
-   canActivate: [AdminGuardService],
+    canActivate: [AdminGuardService],
   },
 
-  { path: 'salles',  
-   component: ListSallesComponent,
-   canActivate: [AdminGuardService,UserGuardService],
+  {
+    path: 'salles',
+    component: ListSallesComponent,
+    canActivate: [AdminGuardService, UserGuardService],
   },
   {
     path: 'salles/edit/:id',
     component: EditSallesComponent,
-   canActivate: [AdminGuardService],
+    canActivate: [AdminGuardService],
   },
 
   {
     path: 'salles/edit',
     component: EditSallesComponent,
-   canActivate: [AdminGuardService],
+    canActivate: [AdminGuardService],
   },
-
 
   { path: 'classes', component: ListClassesComponent },
   {
@@ -74,5 +75,6 @@ export const routes: Routes = [
     canActivate: [UserGuardService],
   },
   { path: 'changepassword', component: ChangePasswordComponent },
+  { path: 'resetpassword', component: ResetPageComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];

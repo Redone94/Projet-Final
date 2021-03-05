@@ -1,24 +1,48 @@
 <div id="bg">
-    <div class="row" id="log">
-
+  <div class="row" id="log">
     <div class="col-md-6 mx-auto">
-        <div class="card rounded-0" id="card-log">
+      <div class="card rounded-0" id="card-log">
+        <div class="card-body">
+          <h1>Reset Password</h1>
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="form-group">
+              <label class="labelle" for="resetPasswordEmail"
+                >Entrez votre compte email</label
+              >
+              <input
+                type="email"
+                name="email"
+                ngModel
+                required
+                #email="ngModel"
+                class="form-control"
+                id="resetPasswordEmail"
+                placeholder="Enter email"
+              />
 
-            <div class="card-body">
-                <h1>Reset Password</h1>
-                <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-                    <div class="form-group">
-                        <label class="labelle" for="resetPasswordEmail">Entrez votre compte email</label>
-                        <input type="email" name="email" ngModel required #email="ngModel" class="form-control" id="resetPasswordEmail" placeholder="Enter email" />
-
-                        <input type="number" name="number-phone" ngModel required #email="ngModel" class="form-control" id="resetPasswordEmail" placeholder="Enter phone number-phone" />
-                    </div>
-
-                    <button id="btn" type="submit" [disabled]="f.invalid" class="btn btn-primary">
-        Reset Password <i class="fas fa-paper-plane"></i>
-      </button>
-                </form>
+              <input
+                type="string"
+                name="numberphone"
+                ngModel
+                required
+                #email="ngModel"
+                class="form-control"
+                id="resetPasswordEmail"
+                placeholder="Enter phone number-phone"
+              />
             </div>
+
+            <button
+              id="btn"
+              type="submit"
+              [disabled]="f.invalid"
+              class="btn btn-primary"
+            >
+              Reset Password <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>

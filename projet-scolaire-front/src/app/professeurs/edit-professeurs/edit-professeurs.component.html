@@ -1,32 +1,61 @@
-<p>edit-professeurs works!</p>
-
-<div>
-    <div>id:<input [ngModel]="professeur.id" readonly /></div>
-    <div>nom:<input [(ngModel)]="professeur.nom" /></div>
-    <div>prenom:<input [(ngModel)]="professeur.prenom" /></div>
-   <!-- <div>date de naissance:<input [(ngModel)]="professeur.date" /></div> -->
-
-   <div>Adresse:
-   <div>numero:<input [(ngModel)]="professeur.adresse.numero" /></div>
-   <div>voie:<input [(ngModel)]="professeur.adresse.voie" /></div>
-   <div>ville<input [(ngModel)]="professeur.adresse.ville" /></div>
-   </div>
-
-   <div>Etablissement:
-    <select>
-      <option *ngFor="let e of etablissement">
-        <input [(ngModel)]="professeur.etablissement.id.nom" />
-      </option>
-    </select>
-  </div>
-
-    <div>login:<input [(ngModel)]="professeur.compte.login" /></div>
-    <div>password:<input [(ngModel)]="professeur.compte.password" /></div>
-    
-    <div>
-      <button (click)="save()">enregistrer</button>
-      <button [routerLink]="['/professeur']" routerLinkActive="active">
-        retour
+<p>edit-professeurs </p>
+  <ng-container *ngIf="!edit; else formEdit">
+    <td>{{ professeur.id }}</td>
+    <td>{{ professeur.nom }}</td>
+    <td>{{ professeur.prenom }}</td>
+    <td>{{ professeur.datenaissance }}</td>
+    <td>{{ professeur.adresse.numero}}&nbsp;{{ professeur.adresse.voie}}&nbsp;{{professeur.adresse.cp}}&nbsp;{{ professeur.adresse.ville}}</td>
+    <td>{{ professeur.etablissement.nom }}</td>
+    <td>{{ professeur.matiere.nom }}</td>
+    <td>
+      <button (click)="changeMode()" class="btn btn-outline-primary">
+        editer
       </button>
-    </div>
-  </div>
+    </td>
+    <td>
+      <button class="btn btn-outline-danger" (click)="delete()">supprimer</button>
+    </td>
+  </ng-container>
+  
+  <ng-template #formEdit><br>
+  
+    <td>id:<input [ngModel]="professeur.id" readonly /></td>
+    <td>Nom Professeur : <input [(ngModel)]="professeur.nom" /></td><br>
+    <td>Prenom Professeur : <input [(ngModel)]="professeur.prenom" /></td>
+
+    <td>Prenom Professeur : <input [(ngModel)]="professeur.prenom" /></td>
+
+    <td>Date de naissance : <input [(ngModel)]="professeur.prenom" /></td>
+<!-- Adresse -->
+    <td>numero:<input [(ngModel)]="professeur.adresse.numero" /></td>
+    <td>voie:<input [(ngModel)]="professeur.adresse.voie" /></td>
+    <td>Code Postale:<input [(ngModel)]="professeur.adresse.cp" /></td>
+    <td>ville<input [(ngModel)]="professeur.adresse.ville" /></td>
+<!-- etablissement -->
+    <td>Etablissement:
+      <select>
+        <option *ngFor="let e of etablissement">
+          <input [(ngModel)]="professeur.etablissement.id.nom" />
+        </option>
+      </select>
+  </td>
+      <td>matiere:
+        <select>
+          <option *ngFor="let m of matiere">
+            <input [(ngModel)]="professeur.matiere.id.nom" />
+          </option>
+        </select>
+      </td>
+<!-- login -->
+    <td> login:<input [(ngModel)]="professeur.compte.login" /></td>
+      <td>password:<input [(ngModel)]="professeur.compte.password" /></td>
+
+
+      <button (click)="save()" class="btn btn-outline-success">
+        enregistrer
+      </button>
+  
+    <td>
+      <button (click)="cancel()" class="btn btn-outline-warning">annuler</button>
+    </td>
+  </ng-template>

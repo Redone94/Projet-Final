@@ -2,6 +2,8 @@ package ProjetScolaire.restController;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -30,6 +32,7 @@ import ProjetScolaire.entity.Compte;
 import ProjetScolaire.entity.Vue;
 import ProjetScolaire.exception.ProfesseurNotFoundException;
 import ProjetScolaire.exception.UserInvalidException;
+import ProjetScolaire.repository.CompteRepository;
 import ProjetScolaire.service.CompteService;
 import ProjetScolaire.service.UserDetailsWithCompte;
 
@@ -41,6 +44,8 @@ public class CompteRestController {
 	private CompteService compteService;
 	@Autowired
 	private PasswordEncoder passwordEncorder;
+	@Autowired
+	private CompteRepository compterepo;
 //	
 //	@GetMapping({ "", "/" })
 //	@JsonView(Vue.Common.class)
@@ -112,5 +117,19 @@ public class CompteRestController {
 		c.setStatut(false);
 		compteService.save(c);
 		return c;
+	}
+	
+	
+	@PutMapping("/changePasswordreset")
+	@JsonView(Vue.Common.class)
+	public Compte getComptesReset(Model model,Authentication authentif,@RequestBody Map<String, Object >map) {
+		String login=(String) map.get("login");
+		String password=(String) map.get("password");
+		Optional<Compte> c=compterepo.findByLogin(login);
+		Compte compte=c.get();
+		compte.setPassword(passwordEncorder.encode(password));
+		compte.setStatut(false);
+		compteService.save(compte);
+		return compte;
 	}
 }

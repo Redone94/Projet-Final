@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Etablissement } from 'src/app/model/etablissement';
+import { Matiere } from 'src/app/model/matiere';
 import { Professeur } from 'src/app/model/professeur';
 import { ProfesseurService } from 'src/app/service/professeur.service';
 
@@ -10,8 +11,19 @@ import { ProfesseurService } from 'src/app/service/professeur.service';
   styleUrls: ['./edit-professeurs.component.css']
 })
 export class EditProfesseursComponent implements OnInit {
-professeur: Professeur = new Professeur();
+  @Input()
+  professeur: Professeur = new Professeur();
 etablissement:Etablissement[]=[];
+matiere: Matiere[]=[];
+
+edit: boolean = false;
+@Output('delete')
+deleteEvent: EventEmitter<number> = new EventEmitter();
+@Output('insert')
+insertEvent: EventEmitter<void> = new EventEmitter();
+@Output('cancel')
+cancelEvent: EventEmitter<void> = new EventEmitter();
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,10 +37,13 @@ etablissement:Etablissement[]=[];
       if (params.id) {
         this.professeurService.findById(params.id).subscribe((data) => {
           this.professeur = data;
-        });
+        })
       }
-    });
-  }
+     } )
+     if (!this.professeur.id) {
+       this.changeMode();
+     }
+   }
   public save() {
     if (this.professeur.id) {
       this.professeurService.update(this.professeur).subscribe((result) => {
@@ -43,6 +58,20 @@ etablissement:Etablissement[]=[];
   private goList(info: Object) {
     this.router.navigate(['/professeur'], { queryParams: info });
    }
+   public delete() {
+    this.deleteEvent.emit(this.professeur.id);
+  }
+
+  public changeMode() {
+    this.edit = !this.edit;
+  }
+  public cancel() {
+    this.changeMode();
+    if (!this.professeur.id) {
+      console.log('here');
+      this.cancelEvent.emit();
+    }
+  }
 
 
 }

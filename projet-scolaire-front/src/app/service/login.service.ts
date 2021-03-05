@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
 
 import { Login } from '../model/login';
@@ -50,7 +49,7 @@ export class LoginService {
     );
   }
 
-  resetPassword(model: any, o: object) {
-    return this.http.post(this.resetPasswordUrl, o, model);
+  resetPassword(model: any, o: object): Observable<any> {
+    return this.http.post<Login>(this.resetPasswordUrl, o, model);
   }
 }

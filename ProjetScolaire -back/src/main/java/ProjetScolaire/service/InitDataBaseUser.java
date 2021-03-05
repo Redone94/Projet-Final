@@ -51,6 +51,7 @@ public class InitDataBaseUser implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		
 		Adresse a= new Adresse();
 		a.setNumero(153);
 		a.setVille("Limoges");
@@ -121,6 +122,13 @@ public class InitDataBaseUser implements CommandLineRunner{
 		c2.setProfPrincipal("Mlle Rose");
 		classeRepo.save(c2);
 		
+		Compte reset=new Compte();
+		reset.setLogin("reset");
+		reset.setPassword(passwordEncorder.encode("reset*123"));
+		reset.setRole(Role.ROLE_ADMIN);
+		reset.setMail("red.m");
+		compteRepository.save(reset);
+
 		Compte C1=new Compte();
 		Compte C2=new Compte();
 		Compte C3=new Compte();
@@ -128,18 +136,19 @@ public class InitDataBaseUser implements CommandLineRunner{
 		C1.setPassword(passwordEncorder.encode("123"));
 		C1.setRole(Role.ROLE_ADMIN);
 		C1.setMail("radwane");
+		C1.setTel("0666");
 		compteRepository.save(C1);
 		
 		C2.setLogin("moriarty");
 		C2.setPassword(passwordEncorder.encode("phys1que"));
 		C2.setRole(Role.ROLE_UTILISATEUR);
-		C2.setMail("radwane");
+		C2.setMail("radwane2");
 		compteRepository.save(C2);
 		
 		C3.setLogin("ombrage");
 		C3.setPassword(passwordEncorder.encode("potters"));
 		C3.setRole(Role.ROLE_UTILISATEUR);
-		C3.setMail("radwane");
+		C3.setMail("radwane3");
 		compteRepository.save(C3);
 		
 		

@@ -25,15 +25,31 @@ export class ProfesseurService {
 
   }
   public delete(id: number): Observable<void>{
-    return this.http.delete<void>(this.url + '/' +id);
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+    });
+    return this.http.delete<void>(this.url + '/' +id,{ headers:httpHeaders });
   }
   public findById(id:number): Observable<Professeur>{
-    return this.http.get<Professeur>(this.url + '/'+id);
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+    });
+    return this.http.get<Professeur>(this.url + '/'+id,{ headers:httpHeaders });
   }
   public update(professeur: Professeur): Observable<Professeur> {
-   return this.http.put<Professeur>(`${this.url}/${professeur.id}`, professeur);
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+    });
+   return this.http.put<Professeur>(`${this.url}/${professeur.id}`, professeur,{ headers:httpHeaders });
  }
  public insert(professeur: Professeur): Observable<Professeur>{
+  const httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+  });
   const o ={
 id: professeur.id,
 nom: professeur.nom,
@@ -60,6 +76,6 @@ etablissement:professeur.compte.etablissement,
 
 }
   };
-  return this.http.post<Professeur>(this.url,o);
+  return this.http.post<Professeur>(this.url,o,{ headers:httpHeaders });
 }
 }

@@ -19,20 +19,36 @@ export class EtablissementService {
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
       });
-    console.log(sessionStorage.getItem('tokenId'));
+    // console.log(sessionStorage.getItem('tokenId'));
     return this.http.get<Etablissement[]>(this.url, {headers: httpHeaders} );
 
   }
   public delete(id: number): Observable<void>{
-    return this.http.delete<void>(this.url + '/' +id);
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+      });
+    return this.http.delete<void>(this.url + '/' +id, {headers: httpHeaders} );
   }
   public findById(id:number): Observable<Etablissement>{
-    return this.http.get<Etablissement>(this.url + '/'+id);
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+      });
+    return this.http.get<Etablissement>(this.url + '/'+id, {headers: httpHeaders} );
   }
   public update(etablissement: Etablissement): Observable<Etablissement> {
-   return this.http.put<Etablissement>(`${this.url}/${etablissement.id}`, etablissement);
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+      });
+   return this.http.put<Etablissement>(`${this.url}/${etablissement.id}`, etablissement, {headers: httpHeaders} );
  }
  public insert(etablissement: Etablissement): Observable<Etablissement>{
+  const httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+    });
   const o ={
     id: etablissement.id,
     nom: etablissement.nom,
@@ -46,7 +62,7 @@ adresse: {
 },
 logo : etablissement.logo,
 };
-return this.http.post<Etablissement>(this.url,o);
+return this.http.post<Etablissement>(this.url,o, {headers: httpHeaders} );
 }
 
 
