@@ -18,8 +18,7 @@ h1,
 
 #card-log {
     flex-direction: inherit;
-    background-color: #02222cad;
-    height: 550px;
+    background-color: #02222c78;
 }
 
 #log {
@@ -72,15 +71,10 @@ h1,
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-#mail {
+#resetPasswordEmail {
     color: #ffff;
 }
 
-.form-group {
-    margin-bottom: 1rem;
-    margin-top: 50px;
-}
-
-#phone {
-    padding-top: 30px;
+#mail {
+    color: #ffff;
 }
