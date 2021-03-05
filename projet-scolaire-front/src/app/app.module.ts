@@ -28,6 +28,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ResetPageComponent } from './reset-page/reset-page.component';
 
 import { UtilisateursComponent } from './utilisateurs/utilisateurs/utilisateurs.component';
+import { SchedulerModule } from '@progress/kendo-angular-scheduler';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SchedulerComponent } from './scheduler/scheduler.component';
+
+
 
 @NgModule({
   declarations: [
@@ -50,6 +55,7 @@ import { UtilisateursComponent } from './utilisateurs/utilisateurs/utilisateurs.
     HomeComponent,
     ChangePasswordComponent,
     ResetPageComponent,
+    SchedulerComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,8 @@ import { UtilisateursComponent } from './utilisateurs/utilisateurs/utilisateurs.
     HttpClientModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    SchedulerModule,
+    BrowserAnimationsModule,BrowserModule, BrowserAnimationsModule, SchedulerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
