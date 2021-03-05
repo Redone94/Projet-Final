@@ -56,7 +56,7 @@ cancelEvent: EventEmitter<void> = new EventEmitter();
     }
   }
   private goList(info: Object) {
-    this.router.navigate(['/professeur'], { queryParams: info });
+    this.router.navigate(['/professeurs'], { queryParams: info });
    }
    public delete() {
     this.deleteEvent.emit(this.professeur.id);
@@ -70,7 +70,7 @@ cancelEvent: EventEmitter<void> = new EventEmitter();
     if (!this.professeur.id) {
       console.log('here');
       this.cancelEvent.emit();
-    }
+    }this.router.navigate(['/professeurs']);
   }
 
 

@@ -1,1 +1,49 @@
-<p>edit-etablissement works!</p>
+<p>edit-etablissement</p>
+
+<ng-container *ngIf="!edit; else formEdit">
+    <td>{{ etablissement.id }}</td>
+    <td>{{ etablissement.nom }}</td>
+    <td>{{ etablissement.TypeEtablissement }}</td>
+    <td>{{ etablissement.numero }}</td>
+    <td>{{ etablissement.adresse.numero }}</td>
+    <td>{{ etablissement.adresse.voie }}</td>
+    <td>{{ etablissement.adresse.cp }}</td>
+    <td>{{ etablissement.adresse.ville }}</td>
+    <td>
+      <button (click)="changeMode()" class="btn btn-outline-primary">
+        editer
+      </button>
+    </td>
+    <td>
+      <button class="btn btn-outline-danger" (click)="delete()">supprimer</button>
+    </td>
+  </ng-container>
+
+  <ng-template #formEdit><br>
+
+    <td>{{ etablissement.id }}</td>
+    <td>Nom de l'etablissement : <input [(ngModel)]="etablissement.nom" /></td><br>
+    <!-- <td>Etablissement :<select>
+        <option *ngFor="let te of typeEtab">
+          <input [(ngModel)]="te" />
+        </option>
+      </select></td> -->
+
+      <td>Numero de l'etablissement : <input [(ngModel)]="etablissement.numeroTel" /></td><br>    
+<!-- Adresse -->
+<!-- <td>numero:<input [(ngModel)]="etablissement.adresse.numero" /></td>
+<td>voie:<input [(ngModel)]="etablissement.adresse.voie" /></td><br><br>
+<td>Code Postale:<input [(ngModel)]="etablissement.adresse.cp" /></td>
+<td>ville<input [(ngModel)]="etablissement.adresse.ville" /></td><br><br> -->
+
+
+      
+    <td>
+      <button (click)="save()" class="btn btn-outline-success">
+        enregistrer
+      </button>
+    </td>
+    <td>
+      <button (click)="cancel()" class="btn btn-outline-warning">annuler</button>
+    </td>
+  </ng-template>

@@ -13,7 +13,6 @@ import { ProfesseurService } from 'src/app/service/professeur.service';
 export class ListProfesseursComponent implements OnInit {
 
   professeur: Professeur[] = [];
-  showNew: boolean = false;
 
   constructor(private professeurService: ProfesseurService, private router: Router) { }
 
@@ -33,20 +32,5 @@ public delete(id: number){
 }
 
 public findById(){}
-
-public displayNew() {
-  this.showNew = !this.showNew;
-}
-
-public insert() {
-  this.displayNew();
-  this.initList();
-}
-
-public cancel() {
-  this.displayNew();
-}
-
-
 
 }

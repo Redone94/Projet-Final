@@ -25,8 +25,9 @@
       <td>{{ p.adresse.numero}}&nbsp;{{ p.adresse.voie}}&nbsp;{{ p.adresse.cp}}&nbsp;{{ p.adresse.ville}}</td>
       <td>{{ p.matiere.nom }}</td>
       <td>
-        <button
-          [routerLink]="['/professeur', 'edit', p.id]" routerLinkActive="active">
+        <button type="button" class="btn btn-outline-warning"
+        [routerLink]="['/professeurs', 'edit', p.id_professeur]" 
+        routerLinkActive="active">
           modifier</button>
       </td>
       <td>
@@ -35,6 +36,6 @@
     </tr>
   </tbody>
   </table>
-  <button class="btn btn-link" (click)="displayNew()">ajouter professeur</button>
+  <button type="button" class="btn btn-outline-primary" [routerLink]="['/professeurs', 'edit']" routerLinkActive="active">ajouter professeur</button>
 
 </div>

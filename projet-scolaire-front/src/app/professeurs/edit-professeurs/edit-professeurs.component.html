@@ -19,18 +19,15 @@
   
   <ng-template #formEdit><br>
   
-    <td>id:<input [ngModel]="professeur.id" readonly /></td>
+    <td>id:<input [ngModel]="professeur.id" readonly /></td><br>
     <td>Nom Professeur : <input [(ngModel)]="professeur.nom" /></td><br>
-    <td>Prenom Professeur : <input [(ngModel)]="professeur.prenom" /></td>
-
-    <td>Prenom Professeur : <input [(ngModel)]="professeur.prenom" /></td>
-
-    <td>Date de naissance : <input [(ngModel)]="professeur.prenom" /></td>
+    <td>Prenom Professeur : <input [(ngModel)]="professeur.prenom" /></td><br>
+    <td>Date de naissance : <input [(ngModel)]="professeur.datenaissance" /></td><br>
 <!-- Adresse -->
     <td>numero:<input [(ngModel)]="professeur.adresse.numero" /></td>
-    <td>voie:<input [(ngModel)]="professeur.adresse.voie" /></td>
+    <td>voie:<input [(ngModel)]="professeur.adresse.voie" /></td><br>
     <td>Code Postale:<input [(ngModel)]="professeur.adresse.cp" /></td>
-    <td>ville<input [(ngModel)]="professeur.adresse.ville" /></td>
+    <td>ville<input [(ngModel)]="professeur.adresse.ville" /></td><br>
 <!-- etablissement -->
     <td>Etablissement:
       <select>
@@ -38,17 +35,17 @@
           <input [(ngModel)]="professeur.etablissement.id.nom" />
         </option>
       </select>
-  </td>
+  </td><br>
       <td>matiere:
         <select>
           <option *ngFor="let m of matiere">
             <input [(ngModel)]="professeur.matiere.id.nom" />
           </option>
         </select>
-      </td>
+      </td><br>
 <!-- login -->
-    <td> login:<input [(ngModel)]="professeur.compte.login" /></td>
-      <td>password:<input [(ngModel)]="professeur.compte.password" /></td>
+    <td> login:<input [(ngModel)]="professeur.compte.login" /></td><br>
+      <td>password:<input [(ngModel)]="professeur.compte.password" /></td><br>
 
 
       <button (click)="save()" class="btn btn-outline-success">

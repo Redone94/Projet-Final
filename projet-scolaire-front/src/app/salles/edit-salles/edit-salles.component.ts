@@ -53,7 +53,7 @@ export class EditSallesComponent implements OnInit {
     if (!this.salle.id) {
       console.log('here');
       this.cancelEvent.emit();
-    }
+    }this.router.navigate(['/salles']);
   }
 
   public save() {

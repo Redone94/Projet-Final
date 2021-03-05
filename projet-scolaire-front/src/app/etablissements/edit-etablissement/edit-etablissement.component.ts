@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Adresse } from 'src/app/model/adresse';
 
 import { Etablissement } from 'src/app/model/etablissement';
+import { TypeEtablissement } from 'src/app/model/type-etablissement.enum';
 import { EtablissementService } from 'src/app/service/etablissement.service';
 
 @Component({
@@ -12,6 +14,8 @@ import { EtablissementService } from 'src/app/service/etablissement.service';
 export class EditEtablissementComponent implements OnInit {
 @Input()
 etablissement: Etablissement= new Etablissement();
+adresse :Adresse;
+typeEtab:TypeEtablissement;
 edit: boolean = false;
 @Output('delete')
 deleteEvent: EventEmitter<number> = new EventEmitter();
@@ -51,7 +55,7 @@ cancelEvent: EventEmitter<void> = new EventEmitter();
     }
   }
   private goList(info: Object) {
-    this.router.navigate(['/etablissement'], { queryParams: info });
+    this.router.navigate(['/etablissements'], { queryParams: info });
    }
    public delete() {
     this.deleteEvent.emit(this.etablissement.id);
@@ -65,7 +69,7 @@ cancelEvent: EventEmitter<void> = new EventEmitter();
     if (!this.etablissement.id) {
       console.log('here');
       this.cancelEvent.emit();
-    }
+    }this.router.navigate(['/etablissements']);
   }
 
 }

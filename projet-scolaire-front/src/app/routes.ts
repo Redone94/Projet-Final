@@ -38,6 +38,16 @@ export const routes: Routes = [
   {
     path: 'etablissements',
     component: ListEtablissementsComponent,
+    canActivate: [AdminGuardService,UserGuardService],
+  },
+  {
+    path: 'etablissements/edit:id',
+    component: EditEtablissementComponent,
+    canActivate: [AdminGuardService],
+  },
+  {
+    path: 'etablissements/edit',
+    component: EditEtablissementComponent,
     canActivate: [AdminGuardService],
   },
   {
@@ -72,8 +82,19 @@ export const routes: Routes = [
   {
     path: 'professeurs',
     component: ListProfesseursComponent,
-    canActivate: [UserGuardService],
+    canActivate: [UserGuardService,AdminGuardService],
   },
+  {
+    path: 'professeurs/edit:id_professeur',
+    component: EditProfesseursComponent,
+    canActivate: [AdminGuardService],
+  },
+  {
+    path: 'professeurs/edit',
+    component:EditProfesseursComponent,
+    canActivate: [AdminGuardService],
+  },
+  
   { path: 'changepassword', component: ChangePasswordComponent },
   { path: 'resetpassword', component: ResetPageComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Etablissement } from 'src/app/model/etablissement';
 import { EtablissementService } from 'src/app/service/etablissement.service';
 
@@ -10,9 +11,9 @@ import { EtablissementService } from 'src/app/service/etablissement.service';
 export class ListEtablissementsComponent implements OnInit {
 
   etablissement: Etablissement[]=[];
-  showNew: boolean = false;
+  
 
-  constructor(private etabliService: EtablissementService) { 
+  constructor(private etabliService: EtablissementService, private router: Router) { 
 
     
   }
@@ -32,19 +33,5 @@ public delete(id: number){
   });
 }
 public findById(){}
-
-public displayNew() {
-  this.showNew = !this.showNew;
-}
-
-public insert() {
-  this.displayNew();
-  this.initList();
-}
-
-public cancel() {
-  this.displayNew();
-}
-
 
 }
