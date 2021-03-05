@@ -138,6 +138,6 @@ export const routes: Routes = [
 
   { path: 'changepassword', component: ChangePasswordComponent },
   { path: 'resetpassword', component: ResetPageComponent },
-  { path: 'scheuler', component: SchedulerComponent },
+  { path: 'scheduler', component: SchedulerComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
