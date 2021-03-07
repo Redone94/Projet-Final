@@ -42,6 +42,7 @@ public class EtablissementRestController {
 	public List<Etablissement> geEtablissement() {
 		return etabliService.alletablissement();
 	}
+	
 	@PostMapping({ "", "/" })
 	public ResponseEntity<Etablissement> addEtablissement(@Valid @RequestBody Etablissement e, BindingResult br,
 			UriComponentsBuilder uCB) {
@@ -56,6 +57,8 @@ public class EtablissementRestController {
 		headers.setLocation(uri);
 		return new ResponseEntity<Etablissement>(e, headers, HttpStatus.CREATED);
 	}
+	
+	
 	@GetMapping("/{id}")
 	@JsonView(Vue.Common.class)
 	public Etablissement findById(@PathVariable("id") Integer id) {

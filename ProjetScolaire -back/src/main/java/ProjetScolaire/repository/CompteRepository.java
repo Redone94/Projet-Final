@@ -15,6 +15,7 @@ public interface CompteRepository extends JpaRepository<Compte, String> {
 	public List<Compte> findAllByRole(Role role);
 	public Compte findByMailAndTel(String mail,String tel);
 	public Compte findByLoginAndPassword(String login,String passwrod);
+	public Optional<Compte> findById(Integer id);
 //	@Query("select c from Compte c left join fetch c.role where c.login=:login")
 //	public Optional<Compte> findByLoginWithRole(@Param("login") String login);
 

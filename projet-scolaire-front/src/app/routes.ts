@@ -24,6 +24,7 @@ import {
 import {
   ListMatieresComponent
 } from './matieres/list-matieres/list-matieres.component';
+import { PlanningComponent } from './planning/planning.component';
 import {
   EditProfesseursComponent
 } from './professeurs/edit-professeurs/edit-professeurs.component';
@@ -126,10 +127,10 @@ export const routes: Routes = [
   {
     path: 'professeurs',
     component: ListProfesseursComponent,
-    canActivate: [UserGuardService, AdminGuardService],
+    canActivate: [AdminGuardService, UserGuardService],
   },
   {
-    path: 'professeurs/edit:id_professeur',
+    path: 'professeurs/edit/:id',
     component: EditProfesseursComponent,
     canActivate: [AdminGuardService],
   },
@@ -137,6 +138,12 @@ export const routes: Routes = [
     path: 'professeurs/edit',
     component: EditProfesseursComponent,
     canActivate: [AdminGuardService],
+  },
+
+  {
+    path: 'planning',
+    component: PlanningComponent,
+    canActivate: [AdminGuardService, UserGuardService],
   },
 
   { path: 'changepassword', component: ChangePasswordComponent },

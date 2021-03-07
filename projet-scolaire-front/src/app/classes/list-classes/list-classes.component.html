@@ -1,44 +1,37 @@
-<!-- <div class="page-wrapper">
-  <app-sidebar></app-sidebar>
-  <button *ngIf="user()" class="btn btn-danger" (click)="logout()">deconnexion</button>
+<app-sidebar></app-sidebar>
+<div id="home">
+
+    <div class="row">
+
+        <div class="col-md-6 mx-auto">
+            <h1>Liste des classes</h1>
+
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Id </th>
+                            <th> Nom de la classe </th>
+                            <th> Nom du professeur principal </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let c of classes">
+                            <td> {{c.id}} </td>
+                            <td> {{c.nom}}</td>
+                            <td> {{c.profPrincipal}}</td>
 
 
-</div>
-<router-outlet></router-outlet> -->
-<h3>Liste des classes</h3>
+                            <td><button type="button" class="btn btn-outline-danger" (click)="delete(c.id)">supprimer</button></td>
 
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th> Id </th>
-          <th> Nom de la classe </th>
-          <th> Nom du professeur principal  </th>
-        </tr>
-      </thead>
-      <tbody>
-
-    <tr *ngFor = "let c of classes">
-      <td> {{c.id}} </td>
-      <td> {{c.nom}}</td>
-      <td> {{c.profPrincipal}}</td>
+                            <td> <button type="button" class="btn btn-outline-warning" [routerLink]="['/classes', 'edit', c.id]" routerLinkActive="active"> modifier </button></td>
+                        </tr>
+                    </tbody>
 
 
-      <td><button type="button" class="btn btn-outline-danger"
-        (click)="delete(c.id)">supprimer</button></td>
-
-      <td> <button type="button" class="btn btn-outline-warning"
-        [routerLink]="['/classes', 'edit', c.id]"
-        routerLinkActive="active"> modifier </button></td>
-    </tr>
-  </tbody>
+                </table>
+                <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/classes', 'edit']" routerLinkActive="active">ajouter</button></td>
 
 
-  </table>
-  <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/classes', 'edit']" routerLinkActive="active">ajouter</button></td>
-
-
-</div>
-
-
-
+            </div>

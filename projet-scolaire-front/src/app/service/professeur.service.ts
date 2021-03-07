@@ -64,6 +64,7 @@ export class ProfesseurService {
       nom: professeur.nom,
       prenom: professeur.prenom,
       datenaissance: professeur.datenaissance,
+
       matiere: [professeur.matiere],
 
       adresse: {
@@ -79,7 +80,8 @@ export class ProfesseurService {
         id: professeur.compte.id,
         login: professeur.compte.login,
         role: professeur.compte.role,
-        etablissement: professeur.compte.etablissement,
+
+        etablissement: [professeur.compte.etablissement],
       },
     };
     return this.http.post<Professeur>(this.url, o, {

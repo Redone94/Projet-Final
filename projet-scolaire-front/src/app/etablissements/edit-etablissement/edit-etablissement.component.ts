@@ -23,8 +23,10 @@ import { EtablissementService } from 'src/app/service/etablissement.service';
 export class EditEtablissementComponent implements OnInit {
   @Input()
   etablissement: Etablissement = new Etablissement();
+  _typeEtab: string[] = ['LYCEE', 'COLLEGE'];
   adresse: Adresse;
   typeEtab: TypeEtablissement;
+
   edit: boolean = false;
   @Output('delete')
   deleteEvent: EventEmitter<number> = new EventEmitter();
@@ -45,6 +47,7 @@ export class EditEtablissementComponent implements OnInit {
       if (params.id) {
         this.etabliService.findById(params.id).subscribe((data) => {
           this.etablissement = data;
+          console.log(this.etablissement);
         });
       }
     });
@@ -81,7 +84,7 @@ export class EditEtablissementComponent implements OnInit {
     }
     this.router.navigate(['/etablissements']);
   }
-  public get enum() {
-    return Object.keys(TypeEtablissement);
+  public get _typEtab() {
+    return this._typeEtab;
   }
 }

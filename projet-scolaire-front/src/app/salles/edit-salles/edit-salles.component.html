@@ -1,28 +1,44 @@
-<ng-container *ngIf="!edit; else formEdit">
-  <td>{{ salle.id }}</td>
-  <td>{{ salle.nom }}</td>
-  <td>{{ salle.capacite }}</td>
-  <td>
-    <button (click)="changeMode()" class="btn btn-outline-primary">
+<app-sidebar></app-sidebar>
+<div id="home">
+
+    <div class="row">
+
+        <div class="col-md-6 mx-auto">
+            <h1>Liste des salles</h1>
+
+            <div>
+                <table class="table table-striped">
+                    <ng-container *ngIf="!edit; else formEdit">
+                        <td>{{ salle.id }}</td>
+                        <td>{{ salle.nom }}</td>
+                        <td>{{ salle.capacite }}</td>
+                        <td>
+                            <button (click)="changeMode()" class="btn btn-outline-primary">
       editer
     </button>
-  </td>
-  <td>
-    <button class="btn btn-outline-danger" (click)="delete()">supprimer</button>
-  </td>
-</ng-container>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-danger" (click)="delete()">supprimer</button>
+                        </td>
+                    </ng-container>
 
-<ng-template #formEdit><br>
+                    <ng-template #formEdit><br>
 
-  <td>{{ salle.id }}</td>
-  <td>Nom de la salle : <input [(ngModel)]="salle.nom" /></td><br>
-  <td>Capacité de la salle : <input [(ngModel)]="salle.capacite" /></td>
-  <td>
-    <button (click)="save()" class="btn btn-outline-success">
+                        <td>{{ salle.id }}</td>
+                        <td>Nom de la salle : <input [(ngModel)]="salle.nom" /></td><br>
+                        <td>Capacité de la salle : <input [(ngModel)]="salle.capacite" /></td>
+                        <td>
+                            <button (click)="save()" class="btn btn-outline-success">
       enregistrer
     </button>
-  </td>
-  <td>
-    <button (click)="cancel()" class="btn btn-outline-warning">annuler</button>
-  </td>
-</ng-template>
+                        </td>
+                        <td>
+                            <button (click)="cancel()" class="btn btn-outline-warning">annuler</button>
+                        </td>
+
+                    </ng-template>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

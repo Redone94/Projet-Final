@@ -12,7 +12,7 @@ import { Utilisateurs } from '../model/utilisateurs';
   providedIn: 'root',
 })
 export class UtilisateurService {
-  private url: string = 'http://localhost:8080/projetscolaire/api/utilisateurs';
+  private url: string = 'http://localhost:8080/projetscolaire/api/compte';
   private HttpHeaders: HttpHeaders;
 
   constructor(private http: HttpClient) {

@@ -11,7 +11,7 @@ export class Etablissement {
   private _numeroTel: string;
 
   private _adresse: Adresse;
-  typeEtab: TypeEtablissement;
+  private _typeEtab: TypeEtablissement;
   private _compte: Compte;
   private _salleClasse: ListSallesComponent;
   private _logo: string;
@@ -24,7 +24,7 @@ export class Etablissement {
     compte?: Compte,
     salleClasse?: ListSallesComponent,
     logo: string = '',
-    typeEtab?: TypeEtablissement
+    typeEtab: TypeEtablissement = null
   ) {
     this._id = id;
     this._nom = nom;
@@ -33,7 +33,8 @@ export class Etablissement {
     this._compte = compte;
     this._salleClasse = salleClasse;
     this._logo = logo;
-    this.typeEtab = typeEtab;
+    this._adresse = adresse;
+    this._typeEtab = typeEtab;
   }
 
   /**
@@ -43,15 +44,13 @@ export class Etablissement {
   public get id(): number {
     return this._id;
   }
-
   /**
-   * Setter id
-   * @param {number} value
+   * Getter typeEtab
+   * @return {TypeEtablissement}
    */
-  public set id(value: number) {
-    this._id = value;
+  public get typeEtab(): TypeEtablissement {
+    return this._typeEtab;
   }
-
   /**
    * Getter nom
    * @return {string}
@@ -61,59 +60,25 @@ export class Etablissement {
   }
 
   /**
+   * Getter numeroTel
+   * @return {string}
+   */
+  public get numeroTel(): string {
+    return this._numeroTel;
+  }
+  /**
    * Getter adresse
    * @return {Adresse}
    */
   public get adresse(): Adresse {
     return this._adresse;
   }
-
   /**
    * Getter compte
    * @return {Compte}
    */
   public get compte(): Compte {
     return this._compte;
-  }
-
-  /**
-   * Getter logo
-   * @return {string}
-   */
-  public get logo(): string {
-    return this._logo;
-  }
-
-  /**
-   * Setter nom
-   * @param {string} value
-   */
-  public set nom(value: string) {
-    this._nom = value;
-  }
-
-  /**
-   * Setter adresse
-   * @param {Adresse} value
-   */
-  public set adresse(value: Adresse) {
-    this._adresse = value;
-  }
-
-  /**
-   * Setter compte
-   * @param {Compte} value
-   */
-  public set compte(value: Compte) {
-    this._compte = value;
-  }
-
-  /**
-   * Setter logo
-   * @param {string} value
-   */
-  public set logo(value: string) {
-    this._logo = value;
   }
 
   /**
@@ -125,6 +90,52 @@ export class Etablissement {
   }
 
   /**
+   * Getter logo
+   * @return {string}
+   */
+  public get logo(): string {
+    return this._logo;
+  }
+
+  /**
+   * Setter id
+   * @param {number} value
+   */
+  public set id(value: number) {
+    this._id = value;
+  }
+
+  /**
+   * Setter nom
+   * @param {string} value
+   */
+  public set nom(value: string) {
+    this._nom = value;
+  }
+  /**
+   * Setter etablissement
+   * @param {TypeEtablissement} value
+   */
+  public set role(value: TypeEtablissement) {
+    this._typeEtab = value;
+  }
+  /**
+   * Setter numeroTel
+   * @param {string} value
+   */
+  public set numeroTel(value: string) {
+    this._numeroTel = value;
+  }
+
+  /**
+   * Setter compte
+   * @param {Compte} value
+   */
+  public set compte(value: Compte) {
+    this._compte = value;
+  }
+
+  /**
    * Setter salleClasse
    * @param {ListSallesComponent} value
    */
@@ -133,18 +144,17 @@ export class Etablissement {
   }
 
   /**
-   * Getter numeroTel
-   * @return {string}
-   */
-  public get numeroTel(): string {
-    return this._numeroTel;
-  }
-
-  /**
-   * Setter numeroTel
+   * Setter logo
    * @param {string} value
    */
-  public set numeroTel(value: string) {
-    this._numeroTel = value;
+  public set logo(value: string) {
+    this._logo = value;
+  }
+  /**
+   * Setter adresse
+   * @param {Adresse} value
+   */
+  public set adresse(value: Adresse) {
+    this._adresse = value;
   }
 }

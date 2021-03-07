@@ -56,6 +56,7 @@ import {
 } from './utilisateurs/utilisateurs/utilisateurs.component';
 import { Sidebar2Component } from './sidebar2/sidebar2.component';
 import { PlanningComponent } from './planning/planning.component';
+import { EditUtilisateursComponent } from './model/edit-utilisateurs/edit-utilisateurs.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { PlanningComponent } from './planning/planning.component';
     ResetPageComponent,
     Sidebar2Component,
     PlanningComponent,
+    EditUtilisateursComponent,
   ],
   imports: [
     BrowserModule,

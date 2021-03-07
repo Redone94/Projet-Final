@@ -98,15 +98,22 @@ public class CompteRestController {
 		return CompteEnBase;
 	}
 
-	@DeleteMapping("/{login}")
-	public ResponseEntity<Void> delete(@PathVariable("login") String login) {
-		Compte CompteEnBase = compteService.findByLogin(login);
-		if (CompteEnBase.getId() == null) {
-			throw new ProfesseurNotFoundException();
-		}
-		compteService.delete(login);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	}
+	@DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
+
+        Optional<Compte> c = compterepo.findById(id);
+        Compte compte=c.get();
+        if (c == null) {
+            throw new ProfesseurNotFoundException();
+        }
+        compterepo.delete(compte);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+
+
+    
 	@PutMapping("/changePassword/{password}")
 	@JsonView(Vue.Common.class)
 	public Compte getComptesTEST(Model model,Authentication authentif,@PathVariable("password") String password) {
