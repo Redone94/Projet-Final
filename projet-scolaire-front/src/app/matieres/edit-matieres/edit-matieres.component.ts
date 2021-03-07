@@ -1,18 +1,24 @@
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
 
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Matiere } from 'src/app/model/matiere';
-import { ActivatedRoute, Router } from '@angular/router';
 import { matiereService } from 'src/app/service/matiere.service';
-
-
 
 @Component({
   selector: 'app-edit-matieres',
   templateUrl: './edit-matieres.component.html',
-  styleUrls: ['./edit-matieres.component.css']
+  styleUrls: ['./edit-matieres.component.css'],
 })
 export class EditMatieresComponent implements OnInit {
-
   @Input()
   matiere: Matiere = new Matiere();
   edit: boolean = false;
@@ -23,20 +29,21 @@ export class EditMatieresComponent implements OnInit {
   @Output('cancel')
   cancelEvent: EventEmitter<void> = new EventEmitter();
 
-  constructor(private matiereService: matiereService,
+  constructor(
+    private matiereService: matiereService,
     private activatedRoute: ActivatedRoute,
-  private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(param=>{
-     if( param.id){
-      this.matiereService.findById(param.id).subscribe(data=>{
-        this.matiere=data;
-        console.log(this.matiere);
-      })
-     }
-    } )
+    this.activatedRoute.params.subscribe((param) => {
+      if (param.id) {
+        this.matiereService.findById(param.id).subscribe((data) => {
+          this.matiere = data;
+          console.log(this.matiere);
+        });
+      }
+    });
     if (!this.matiere.id) {
       this.changeMode();
     }
@@ -55,7 +62,8 @@ export class EditMatieresComponent implements OnInit {
     if (!this.matiere.id) {
       console.log('here');
       this.cancelEvent.emit();
-    }this.router.navigate(['/matieres']);
+    }
+    this.router.navigate(['/matieres']);
   }
 
   public save() {
@@ -74,4 +82,3 @@ export class EditMatieresComponent implements OnInit {
     this.router.navigate(['/matieres'], { queryParams: info });
   }
 }
-

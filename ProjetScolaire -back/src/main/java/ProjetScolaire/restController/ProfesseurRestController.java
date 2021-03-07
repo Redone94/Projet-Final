@@ -98,7 +98,7 @@ public class ProfesseurRestController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
 		Professeur EmployeEnBase = professeurService.findbyId(id);
-		if (EmployeEnBase.getId_professeur	() == null) {
+		if (EmployeEnBase.getId_professeur() == null) {
 			throw new ProfesseurNotFoundException();
 		}
 		professeurService.delete(id);

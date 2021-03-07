@@ -38,7 +38,6 @@ import {
 import {
   ListSallesComponent
 } from './salles/list-salles/list-salles.component';
-import { SchedulerComponent } from './scheduler/scheduler.component';
 import { AdminGuardService } from './service/admin-guard.service';
 import { UserGuardService } from './service/user-guard.service';
 import {
@@ -69,7 +68,7 @@ export const routes: Routes = [
     canActivate: [AdminGuardService, UserGuardService],
   },
   {
-    path: 'etablissements/edit:id',
+    path: 'etablissements/edit/:id',
     component: EditEtablissementComponent,
     canActivate: [AdminGuardService],
   },
@@ -142,6 +141,6 @@ export const routes: Routes = [
 
   { path: 'changepassword', component: ChangePasswordComponent },
   { path: 'resetpassword', component: ResetPageComponent },
-  { path: 'scheduler', component: SchedulerComponent },
+
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];

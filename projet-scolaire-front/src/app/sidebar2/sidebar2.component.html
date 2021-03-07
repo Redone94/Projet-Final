@@ -4,18 +4,20 @@
         <div class="user-pic">
             <img class="img-responsive img-rounded" src="assets/user.jpg" alt="User picture" />
         </div>
-        <div class="sidebar-heading">Administrateur</div>
+        <div class="sidebar-heading">Professeurs</div>
 
         <div class="list-group list-group-flush">
             <a href="#" *ngIf="user()" class="btn btn-danger" (click)="logout()" class="list-group-item list-group-item-action bg-light"><i class="fa fa-power-off"></i></a>
             <a [routerLink]="['/']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-tachometer"></i>Dashboard</a>
-            <a [routerLink]="['/utilisateurs']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-user"></i>Utilisateurs</a>
+
             <a [routerLink]="['/etablissements']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-university"></i>Etablissements</a>
             <a [routerLink]="['/matieres']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-book"></i>Matières</a>
             <a [routerLink]="['/salles']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-graduation-cap"></i>Salles</a>
             <a [routerLink]="['/classes']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-users"></i>Classes</a>
-            <a [routerLink]="['/professeurs']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-user-circle"></i>Professeurs</a>
-            <a [routerLink]="['/planning']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-calendar"></i>Planning</a> >
+
+            <a [routerLink]="['/planning']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-calendar"></i>Planning</a>
+            <a [routerLink]="['/']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-download"></i>Télécharger pdf</a>
+            <a [routerLink]="['/']" routerLinkActive="active" class="list-group-item list-group-item-action bg-light"><i class="fa fa-external-link"></i>Envoyer pdf</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->

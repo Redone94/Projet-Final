@@ -1,1 +1,37 @@
-<p>utilisateurs works!</p>
+<h3>Liste des utilisateurs</h3>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th> Id </th>
+                <th> Login </th>
+                <th> Password </th>
+                <th> Mail </th>
+                <th> Telephone </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let u of utilisateurs">
+                <td> {{u.id}} </td>
+                <td> {{u.login}}</td>
+                <td> {{u.password}}</td>
+                <td> {{u.mail}} </td>
+                <td> {{u.tel}}</td>
+                <!-- <td> {{u.etablissement}}</td> -->
+
+
+                <td><button type="button" class="btn btn-outline-danger" (click)="delete(u.id)">supprimer</button></td>
+
+                <td> <button type="button" class="btn btn-outline-warning" [routerLink]="['/utilisateurs', 'edit', u.id]" routerLinkActive="active"> modifier </button></td>
+            </tr>
+        </tbody>
+
+
+    </table>
+    <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/utilisateurs', 'edit']" routerLinkActive="active">ajouter</button></td>
+
+
+</div>

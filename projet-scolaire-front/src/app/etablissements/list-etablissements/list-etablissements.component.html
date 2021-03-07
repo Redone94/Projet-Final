@@ -2,39 +2,36 @@
 
 <div>
     <table>
-      <thead>
-        <tr>
-        <th>#</th>
-        <th>Nom</th>
-        <th>Etablissement</th>
-        <th>Numero de telephone</th>
-        <th>Adresse</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    
-    <tbody>
-    <tr>
-        <tr *ngFor="let e of etablissement">
-          <td>{{ e.id }}</td>
-          <td>{{ e.nom }}</td>
-          <td>{{ e.TypeEtablissement }}</td>
-          <td>{{ e.numeroTel }}</td>
-          <td>{{ e.adresse.numero}}&nbsp;{{ e.adresse.voie}}&nbsp;{{ e.adresse.cp}}&nbsp;{{ e.adresse.ville}}</td>
-          <td>
-            <button type="button" class="btn btn-outline-warning"
-              [routerLink]="['/etablissements', 'edit', e.id]"
-               routerLinkActive="active">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Etablissement</th>
+                <th>Numero de telephone</th>
+                <th>Adresse</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <tr *ngFor="let e of etablissement">
+                    <td>{{ e.id }}</td>
+                    <td>{{ e.nom }}</td>
+                    <td>{{ e.typeEtab }}</td>
+                    <td>{{ e.numeroTel }}</td>
+                    <td>{{ e.adresse.numero}}&nbsp;{{ e.adresse.voie}}&nbsp;{{ e.adresse.cp}}&nbsp;{{ e.adresse.ville}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-warning" [routerLink]="['/etablissements', 'edit', e.id]" routerLinkActive="active">
               modifier</button>
-          </td>
-          <td>
-            <button type="button" class="btn btn-outline-danger" 
-            (click)="delete(e.id)">supprimer</button>
-          </td>
-        </tr>
-      </tbody>
-      </table>
-      <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/etablissements', 'edit']" routerLinkActive="active">ajouter un etablissement</button></td>
-    
-    </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger" (click)="delete(e.id)">supprimer</button>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/etablissements', 'edit']" routerLinkActive="active">ajouter un etablissement</button></td>
+
+</div>

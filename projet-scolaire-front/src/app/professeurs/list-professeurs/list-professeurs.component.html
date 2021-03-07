@@ -1,41 +1,43 @@
-<p>liste des professeurs</p>
+<div class="container">
+    <h1>Liste des professeurs</h1>
 
-<div>
-<table>
-  <thead>
-    <tr>
-    <th>#</th>
-    <th>Nom</th>
-    <th>Prenom</th>
-    <th>Date de naissance</th>
-    <th>Adresse</th>
-    <th>Matiere</th>
-    <th></th>
-    <th></th>
-  </tr>
-</thead>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Date de naissance</th>
+                    <th>Adresse</th>
+                    <th>Matiere</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
 
-<tbody>
-<tr>
-    <tr *ngFor="let p of professeur">
-      <td>{{ p.id_professeur }}</td>
-      <td>{{ p.nom }}</td>
-      <td>{{ p.prenom }}</td>
-      <td>{{ p.datenaissance }}</td>
-      <td>{{ p.adresse.numero}}&nbsp;{{ p.adresse.voie}}&nbsp;{{ p.adresse.cp}}&nbsp;{{ p.adresse.ville}}</td>
-      <td>{{ p.matiere.nom }}</td>
-      <td>
-        <button type="button" class="btn btn-outline-warning"
-        [routerLink]="['/professeurs', 'edit', p.id_professeur]" 
-        routerLinkActive="active">
+            <tbody>
+                <tr>
+                    <tr *ngFor="let p of professeur">
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.nom }}</td>
+                        <td>{{ p.prenom }}</td>
+                        <td>{{ p.datenaissance }}</td>
+                        <td>{{ p.adresse.numero}}&nbsp;{{ p.adresse.voie}}&nbsp;{{ p.adresse.cp}}&nbsp;{{ p.adresse.ville}}</td>
+                        <td>{{ p.matiere}}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-warning" [routerLink]="['/professeurs', 'edit', p.id]" routerLinkActive="active">
           modifier</button>
-      </td>
-      <td>
-        <button (click)="delete(p.id)">supprimer</button>
-      </td>
-    </tr>
-  </tbody>
-  </table>
-  <button type="button" class="btn btn-outline-primary" [routerLink]="['/professeurs', 'edit']" routerLinkActive="active">ajouter professeur</button>
-
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-danger" (click)="delete(p.id)">supprimer</button>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-outline-primary" [routerLink]="['/professeurs', 'edit']" routerLinkActive="active">ajouter professeur</button>
+        <td>
+            <button (click)="canceladmin()" class="btn btn-outline-warning">annuler</button>
+        </td>
+    </div>
 </div>

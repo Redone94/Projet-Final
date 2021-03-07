@@ -5,39 +5,34 @@
 
 </div>
 <router-outlet></router-outlet> -->
-<h3>Liste des matieres</h3>
+<h1>Liste des matieres</h1>
 
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th> Id </th>
-          <th> Nom de la matiere </th>
-          <th> Couleur </th>
-        </tr>
-      </thead>
-      <tbody>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> Id </th>
+                <th> Nom de la matiere </th>
+                <th> Couleur </th>
+            </tr>
+        </thead>
+        <tbody>
 
-    <tr *ngFor = "let m of matieres">
-      <td> {{m.id}} </td>
-      <td> {{m.nom}}</td>
-      <td> {{m.couleur}}</td>
-
-
-      <td><button type="button" class="btn btn-outline-danger"
-        (click)="delete(m.id)">supprimer</button></td>
-
-      <td> <button type="button" class="btn btn-outline-warning"
-        [routerLink]="['/matieres', 'edit', m.id]"
-        routerLinkActive="active"> modifier </button></td>
-    </tr>
-  </tbody>
+            <tr *ngFor="let m of matieres">
+                <td> {{m.id}} </td>
+                <td> {{m.nom}}</td>
+                <td> {{m.couleur}}</td>
 
 
-  </table>
-  <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/matieres', 'edit']" routerLinkActive="active">ajouter</button></td>
+                <td><button type="button" class="btn btn-outline-danger" (click)="delete(m.id)">supprimer</button></td>
+
+                <td> <button type="button" class="btn btn-outline-warning" [routerLink]="['/matieres', 'edit', m.id]" routerLinkActive="active"> modifier </button></td>
+            </tr>
+        </tbody>
+
+
+    </table>
+    <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/matieres', 'edit']" routerLinkActive="active">ajouter</button></td>
 
 
 </div>
-
-

@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 
 import { AppComponent } from './app.component';
 import {
@@ -51,11 +50,12 @@ import {
 import {
   ListSallesComponent
 } from './salles/list-salles/list-salles.component';
-import { SchedulerComponent } from './scheduler/scheduler.component';
 import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
 import {
   UtilisateursComponent
 } from './utilisateurs/utilisateurs/utilisateurs.component';
+import { Sidebar2Component } from './sidebar2/sidebar2.component';
+import { PlanningComponent } from './planning/planning.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +78,8 @@ import {
     HomeComponent,
     ChangePasswordComponent,
     ResetPageComponent,
-    SchedulerComponent,
+    Sidebar2Component,
+    PlanningComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,12 +87,11 @@ import {
     RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
-    FontAwesomeModule,
-    SchedulerModule,
+
     BrowserAnimationsModule,
+
     BrowserModule,
-    BrowserAnimationsModule,
-    SchedulerModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

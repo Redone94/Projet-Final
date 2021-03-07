@@ -14,9 +14,9 @@ import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css'],
+  selector: 'app-sidebar2',
+  templateUrl: './sidebar2.component.html',
+  styleUrls: ['./sidebar2.component.css'],
   animations: [
     trigger('slide', [
       state('up', style({ height: 0 })),
@@ -25,7 +25,7 @@ import * as $ from 'jquery';
     ]),
   ],
 })
-export class SidebarComponent implements OnInit {
+export class Sidebar2Component implements OnInit {
   _user: string = '';
   constructor(private router: Router) {}
   ngOnInit() {

@@ -1,81 +1,89 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
+
 import { Professeur } from '../model/professeur';
-import { Roles } from '../model/roles.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfesseurService {
+  private url: string = 'http://localhost:8080/projetscolaire/api/professeur';
 
-  private url: string='http://localhost:8080/projetscolaire/api/professeur'
+  private HttpHeaders: HttpHeaders;
 
-  private httpHeaders: HttpHeaders;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { 
-  }
-
-  public allProfesseur(): Observable<Professeur[]>{
-    const httpHeaders = new HttpHeaders({
+  public allProfesseur(): Observable<Professeur[]> {
+    this.HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
     });
-    return this.http.get<Professeur[]>(this.url,{ headers:httpHeaders } );
-
+    return this.http.get<Professeur[]>(this.url, { headers: this.HttpHeaders });
   }
-  public delete(id: number): Observable<void>{
-    const httpHeaders = new HttpHeaders({
+  public delete(id: number): Observable<void> {
+    this.HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
     });
-    return this.http.delete<void>(this.url + '/' +id,{ headers:httpHeaders });
+    return this.http.delete<void>(this.url + '/' + id, {
+      headers: this.HttpHeaders,
+    });
   }
-  public findById(id:number): Observable<Professeur>{
-    const httpHeaders = new HttpHeaders({
+  public findById(id: number): Observable<Professeur> {
+    this.HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
     });
-    return this.http.get<Professeur>(this.url + '/'+id,{ headers:httpHeaders });
+    return this.http.get<Professeur>(this.url + '/' + id, {
+      headers: this.HttpHeaders,
+    });
   }
   public update(professeur: Professeur): Observable<Professeur> {
-    const httpHeaders = new HttpHeaders({
+    this.HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
     });
-   return this.http.put<Professeur>(`${this.url}/${professeur.id}`, professeur,{ headers:httpHeaders });
- }
- public insert(professeur: Professeur): Observable<Professeur>{
-  const httpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
-  });
-  const o ={
-id: professeur.id,
-nom: professeur.nom,
-prenom:professeur.prenom,
-datenaissance: professeur.datenaissance,
-matiere:[
-  professeur.matiere,
-], 
+    return this.http.put<Professeur>(
+      `${this.url}/${professeur.id}`,
+      professeur,
+      { headers: this.HttpHeaders }
+    );
+  }
+  public insert(professeur: Professeur): Observable<Professeur> {
+    this.HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + sessionStorage.getItem('tokenId'),
+    });
+    const o = {
+      id: professeur.id,
+      nom: professeur.nom,
+      prenom: professeur.prenom,
+      datenaissance: professeur.datenaissance,
+      matiere: [professeur.matiere],
 
-adresse: {
-numero: professeur.adresse.numero,
-voie: professeur.adresse.voie,
-cp: professeur.adresse.cp,
-ville:professeur.adresse.ville,
-},
+      adresse: {
+        numero: professeur.adresse.numero,
+        voie: professeur.adresse.voie,
+        cp: professeur.adresse.cp,
+        ville: professeur.adresse.ville,
+      },
 
-image: professeur.logo,
+      image: professeur.logo,
 
-compte: {
-id: professeur.compte.id,
-login:professeur.compte.login,
-role: professeur.compte.role,
-etablissement:professeur.compte.etablissement,
-
-}
-  };
-  return this.http.post<Professeur>(this.url,o,{ headers:httpHeaders });
-}
+      compte: {
+        id: professeur.compte.id,
+        login: professeur.compte.login,
+        role: professeur.compte.role,
+        etablissement: professeur.compte.etablissement,
+      },
+    };
+    return this.http.post<Professeur>(this.url, o, {
+      headers: this.HttpHeaders,
+    });
+  }
 }

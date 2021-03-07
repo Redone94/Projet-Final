@@ -1,5 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
+
+import { Adresse } from 'src/app/model/adresse';
+import { Compte } from 'src/app/model/compte';
 import { Etablissement } from 'src/app/model/etablissement';
 import { Matiere } from 'src/app/model/matiere';
 import { Professeur } from 'src/app/model/professeur';
@@ -8,42 +20,43 @@ import { ProfesseurService } from 'src/app/service/professeur.service';
 @Component({
   selector: 'app-edit-professeurs',
   templateUrl: './edit-professeurs.component.html',
-  styleUrls: ['./edit-professeurs.component.css']
+  styleUrls: ['./edit-professeurs.component.css'],
 })
 export class EditProfesseursComponent implements OnInit {
   @Input()
   professeur: Professeur = new Professeur();
-etablissement:Etablissement[]=[];
-matiere: Matiere[]=[];
+  etablissement: Etablissement[] = [];
+  matiere: Matiere[] = [];
+  adresse: Adresse[] = [];
 
-edit: boolean = false;
-@Output('delete')
-deleteEvent: EventEmitter<number> = new EventEmitter();
-@Output('insert')
-insertEvent: EventEmitter<void> = new EventEmitter();
-@Output('cancel')
-cancelEvent: EventEmitter<void> = new EventEmitter();
-
+  edit: boolean = false;
+  @Output('delete')
+  deleteEvent: EventEmitter<number> = new EventEmitter();
+  @Output('insert')
+  insertEvent: EventEmitter<void> = new EventEmitter();
+  @Output('cancel')
+  cancelEvent: EventEmitter<void> = new EventEmitter();
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private professeurService: ProfesseurService,
-
-  ) { }
+    private professeurService: ProfesseurService
+  ) {}
 
   ngOnInit(): void {
+    this.professeur.adresse = new Adresse();
+    this.professeur.compte = new Compte();
     this.activatedRoute.params.subscribe((params) => {
       if (params.id) {
         this.professeurService.findById(params.id).subscribe((data) => {
           this.professeur = data;
-        })
+        });
       }
-     } )
-     if (!this.professeur.id) {
-       this.changeMode();
-     }
-   }
+    });
+    if (!this.professeur.id) {
+      this.changeMode();
+    }
+  }
   public save() {
     if (this.professeur.id) {
       this.professeurService.update(this.professeur).subscribe((result) => {
@@ -57,8 +70,8 @@ cancelEvent: EventEmitter<void> = new EventEmitter();
   }
   private goList(info: Object) {
     this.router.navigate(['/professeurs'], { queryParams: info });
-   }
-   public delete() {
+  }
+  public delete() {
     this.deleteEvent.emit(this.professeur.id);
   }
 
@@ -70,8 +83,7 @@ cancelEvent: EventEmitter<void> = new EventEmitter();
     if (!this.professeur.id) {
       console.log('here');
       this.cancelEvent.emit();
-    }this.router.navigate(['/professeurs']);
+    }
+    this.router.navigate(['/professeurs']);
   }
-
-
 }
