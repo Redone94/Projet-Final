@@ -1,37 +1,47 @@
-<h3>Liste des utilisateurs</h3>
+<app-sidebar></app-sidebar>
+<div id="home">
 
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th> Id </th>
-                <th> Login </th>
-                <th> Password </th>
-                <th> Mail </th>
-                <th> Telephone </th>
+    <div class="row">
 
-            </tr>
-        </thead>
-        <tbody>
+        <div class="col-md-6 mx-auto">
 
-            <tr *ngFor="let u of utilisateurs">
-                <td> {{u.id}} </td>
-                <td> {{u.login}}</td>
-                <td> {{u.password}}</td>
-                <td> {{u.mail}} </td>
-                <td> {{u.tel}}</td>
-                <!-- <td> {{u.etablissement}}</td> -->
+            <h1>Liste des utilisateurs</h1>
 
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Id </th>
+                            <th> Login </th>
 
-                <td><button type="button" class="btn btn-outline-danger" (click)="delete(u.id)">supprimer</button></td>
+                            <th> Mail </th>
+                            <th> Telephone </th>
 
-                <td> <button type="button" class="btn btn-outline-warning" [routerLink]="['/utilisateurs', 'edit', u.id]" routerLinkActive="active"> modifier </button></td>
-            </tr>
-        </tbody>
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                        <tr *ngFor="let u of utilisateurs">
+                            <td> {{u.id}} </td>
+                            <td> {{u.login}}</td>
 
-    </table>
-    <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/utilisateurs', 'edit']" routerLinkActive="active">ajouter</button></td>
+                            <td> {{u.mail}} </td>
+                            <td> {{u.tel}}</td>
+                            <!-- <td> {{u.etablissement}}</td> -->
 
 
+                            <td><button type="button" class="btn btn-outline-danger" (click)="delete(u.id)">supprimer</button></td>
+
+                            <td> <button type="button" class="btn btn-outline-warning" [routerLink]="['/utilisateurs', 'edit', u.id]" routerLinkActive="active"> modifier </button></td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+                <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/utilisateurs', 'edit']" routerLinkActive="active">ajouter</button></td>
+
+
+            </div>
+        </div>
+    </div>
 </div>

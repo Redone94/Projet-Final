@@ -33,14 +33,17 @@ public class Compte {
 	
 	@NotEmpty
 	@Column(name="password", length = 150, nullable=false)
+	@JsonView(Vue.Common.class)
 	protected String password;
 	
 	@NotEmpty
 	@Column(name="mail")
+	@JsonView(Vue.Common.class)
 	protected String mail;
 	
 	
 	@Column(name="tel")
+	@JsonView(Vue.Common.class)
 	protected String tel;
 		
 	@Enumerated(EnumType.STRING)

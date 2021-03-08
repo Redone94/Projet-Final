@@ -9,12 +9,12 @@ export class Utilisateurs {
   private _etablissement: Etablissement;
 
   constructor(
-    id: number,
-    login: string,
-    password: string,
-    mail: string,
-    tel: string,
-    etablissement: Etablissement
+    id?: number,
+    login: string = '',
+    password: string = '',
+    mail: string = '',
+    tel: string = '',
+    etablissement?: Etablissement
   ) {
     this._id = id;
     this._login = login;

@@ -42,6 +42,9 @@ import {
 import { AdminGuardService } from './service/admin-guard.service';
 import { UserGuardService } from './service/user-guard.service';
 import {
+  EditUtilisateursComponent
+} from './utilisateurs/edit-utilisateurs/edit-utilisateurs.component';
+import {
   UtilisateursComponent
 } from './utilisateurs/utilisateurs/utilisateurs.component';
 
@@ -61,6 +64,16 @@ export const routes: Routes = [
   {
     path: 'utilisateurs',
     component: UtilisateursComponent,
+    canActivate: [AdminGuardService],
+  },
+  {
+    path: 'utilisateurs/edit',
+    component: EditUtilisateursComponent,
+    canActivate: [AdminGuardService],
+  },
+  {
+    path: 'utilisateurs/edit/:id',
+    component: EditUtilisateursComponent,
     canActivate: [AdminGuardService],
   },
   {

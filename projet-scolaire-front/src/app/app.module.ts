@@ -35,6 +35,7 @@ import {
 import {
   ListMatieresComponent
 } from './matieres/list-matieres/list-matieres.component';
+import { PlanningComponent } from './planning/planning.component';
 import {
   EditProfesseursComponent
 } from './professeurs/edit-professeurs/edit-professeurs.component';
@@ -51,12 +52,13 @@ import {
   ListSallesComponent
 } from './salles/list-salles/list-salles.component';
 import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
+import { Sidebar2Component } from './sidebar2/sidebar2.component';
+import {
+  EditUtilisateursComponent
+} from './utilisateurs/edit-utilisateurs/edit-utilisateurs.component';
 import {
   UtilisateursComponent
 } from './utilisateurs/utilisateurs/utilisateurs.component';
-import { Sidebar2Component } from './sidebar2/sidebar2.component';
-import { PlanningComponent } from './planning/planning.component';
-import { EditUtilisateursComponent } from './model/edit-utilisateurs/edit-utilisateurs.component';
 
 @NgModule({
   declarations: [

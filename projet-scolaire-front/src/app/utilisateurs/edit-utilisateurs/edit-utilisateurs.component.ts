@@ -1,7 +1,17 @@
-import { UtilisateurService } from './../../service/utilisateur.service';
-import { Utilisateur } from './../../model/utilisateur';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
+
+import { Utilisateurs } from '../../model/utilisateurs';
+import { UtilisateurService } from '../../service/utilisateur.service';
 
 @Component({
   selector: 'app-edit-utilisateurs',
@@ -10,7 +20,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditUtilisateursComponent implements OnInit {
   @Input()
-  utilisateur: Utilisateur = new Utilisateur();
+  utilisateur: Utilisateurs = new Utilisateurs();
   edit: boolean = false;
   @Output('delete')
   deleteEvent: EventEmitter<number> = new EventEmitter();
@@ -28,7 +38,7 @@ export class EditUtilisateursComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((param) => {
       if (param.id) {
-        this.utilisateurService.findByIdInt(param.id).subscribe((data) => {
+        this.utilisateurService.findById(param.id).subscribe((data) => {
           this.utilisateur = data;
           console.log(this.utilisateur);
         });
